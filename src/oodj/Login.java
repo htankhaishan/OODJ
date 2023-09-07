@@ -14,14 +14,14 @@ import java.util.*;
 /**
  * @author BEN
 //filepath
-// "/Users/ben/Documents/OOPJAVA/OODJ/username.txt"
+// "/Users/ben/Desktop/OODJ/username.txt"
 //"/Users/htankhaishan/Documents/2nd Year 1st Sem/Java/OODJ/username.txt"
 */
 
 public final class Login {
     
     Scanner s = new Scanner(System.in);
-    String filename = "/Users/htankhaishan/Desktop/Backup OODJ/username.txt";
+    String filename = "/Users/ben/Desktop/OODJ/username.txt";
     String user; // Encapsulate the user attribute
     
     

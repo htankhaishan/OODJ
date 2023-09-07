@@ -9,7 +9,7 @@ package oodj;
  */
 
 //filepath
-// "/Users/ben/Desktop/OODJ-main/username.txt"
+// "/Users/ben/Desktop/OODJ/username.txt"
 //"/Users/htankhaishan/Documents/2nd Year 1st Sem/Java/OODJ/username.txt"
 
 
@@ -18,7 +18,7 @@ import java.util.Scanner;
 public class Admin extends Users{
     
     Scanner sc = new Scanner(System.in);
-    String filename = "/Users/htankhaishan/Desktop/OODJ/username.txt";
+    String filename = "/Users/ben/Desktop/OODJ/username.txt";
     private final UserInputUtility userInputUtility;
     
  
