@@ -17,7 +17,7 @@ import java.util.*;
 
 public class Items extends manage {
     
-    private static final String FILENAME = "/Users/ben/Desktop/OODJ//items.txt";
+    private static final String FILENAME = "/Users/htankhaishan/Desktop/OODJ/items.txt";
     private final UserInputUtility userInputUtility; // Composition OOD method
     
     public Items() {
@@ -152,50 +152,38 @@ public class Items extends manage {
     }
 
     @Override
-    public void view() {
-    List<String> itemList = ReadItemListFromFile(FILENAME);
+    public void view(){
+        List<String> itemList = ReadItemListFromFile(FILENAME);
+        
+        int numColumns = 6;
+        int[] maxColumnWidths = new int[numColumns];
+        List<String[]> formattedItemList = new ArrayList<>();
 
-    int numColumns = 6;
-    int[] maxColumnWidths = new int[numColumns];
-    List<String[]> formattedItemList = new ArrayList<>();
-
-    String separator = " -------------------------------------------------------------------------------------------------------------------------";
-    String format = "| %-"+(maxColumnWidths[0]+1)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+1)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s |";
-
-    System.out.println("Item List:");
-    System.out.println(separator);
-    System.out.printf(format,"Code", "Name", "Category", "Price", "Status", "Description");
-    System.out.println();
-    System.out.println(separator);
-
-    boolean itemsFound = false; // Initialize the flag
-
-    for (String item : itemList) {
+        for (String item : itemList) {
         String[] itemInfo = item.split(",");
-
-        if (itemInfo.length >= numColumns) {
-            formattedItemList.add(itemInfo);
+        formattedItemList.add(itemInfo);
 
             for (int i = 0; i < numColumns; i++) {
                 maxColumnWidths[i] = Math.max(maxColumnWidths[i], itemInfo[i].length());
             }
-
-            System.out.printf(format, itemInfo[0], itemInfo[1], itemInfo[2], itemInfo[3], itemInfo[4], itemInfo[5]);
-            System.out.println();
-            itemsFound = true; // Set the flag if items are found
-        } else {
-            // Handle the case where there are not enough elements in the array
-            // This might involve logging an error message or skipping the incomplete entry
-            System.out.println("Incomplete entry detected: " + item);
         }
+        String separator = " -------------------------------------------------------------------------------------------------------------------------";
+        String format = "| %-"+(maxColumnWidths[0]+1)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+1)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s |";
+
+        System.out.println("Item List:");
+        System.out.println(separator);
+        System.out.printf(format,"Code", "Name", "Category", "Price", "Status", "Description");
+        System.out.println();
+        System.out.println(separator);
+        
+        for (String[] itemInfo : formattedItemList) {
+            System.out.printf(format,itemInfo[0], itemInfo[1], itemInfo[2], itemInfo[3], itemInfo[4], itemInfo[5]);
+            System.out.println();
         }
 
         System.out.println(separator);
-
-        if (!itemsFound) {
-            System.out.println("No items found.");
+    
         }
-    }
     
     public static List<String> ReadItemListFromFile(String FILENAME){
             List<String> itemList = new ArrayList<>();
@@ -358,4 +346,5 @@ public class Items extends manage {
     }
     return false; // Item not found
     }
+
 }    
