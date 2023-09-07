@@ -37,7 +37,11 @@ public final class Sales {
     }
 
     private void displayMenu() {
-        System.out.println("Welcome, Sale Manager!\n1. Item Entry Manage.\n2. Supplier Entry Manage.\n3. Daily Item-Wise Sales Entry.\n4. Create Requisition.\n5. List of Purchase Orders.\n0. Logout.\n");
+        System.out.println("\n---------------------------------------------------");
+        System.out.println("What do you want to do today!");
+        System.out.println("---------------------------------------------------");
+        System.out.println("Welcome, Sale Manager!\n1. Item Entry Manage.\n2. Supplier Entry Manage.\n3. Daily Item-Wise Sales Entry.\n4. Create Requisition.\n5. List of Purchase Orders.\n0. Logout.");
+        System.out.println("---------------------------------------------------");
         System.out.print("Enter your choice: ");
     }
 
@@ -74,7 +78,7 @@ public final class Sales {
         System.out.println("Logged out Successfully. Goodbye!");
     }
 
-    private void itemEntry() throws IOException {
+    public void itemEntry() throws IOException {
     while (true) {
         System.out.println("\nItem Entry Submenu...\n1. View Items.\n2. Find Specific Items with Name.\n3. Add New Items.\n4. Delete Items.\n5. Edit Item Informations.\n0. Go back to Main Menu\n");
         System.out.print("Enter your choice: ");
@@ -169,7 +173,7 @@ public final class Sales {
     }
 }
         
-    private void supplierEntry() throws IOException {
+    public void supplierEntry() throws IOException {
         boolean supplierDisplayMenu = true;
         while (supplierDisplayMenu) {
         System.out.println("Supplier Entry Submenu...\n1. View Suppliers. \n2. Add Supplier.\n3. Delete Supplier Information.\n4. Edit Supplier Informations.\n0. Go back to Main Menu\n");
@@ -244,7 +248,7 @@ public final class Sales {
         }
     }
     
-    private void dailyItemsWiseSales() throws IOException {
+    public void dailyItemsWiseSales() throws IOException {
         while (true) {
         System.out.println("Daily Item-Wise Sales Submenu...\n1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
         System.out.print("Enter your choice: ");
@@ -335,7 +339,7 @@ public final class Sales {
     }
     
     /*
-    private void dailyItemsWiseSales() throws IOException {
+    public void dailyItemsWiseSales() throws IOException {
         boolean dailyItemsDisplayMenu = true;
         while (dailyItemsDisplayMenu) {
         System.out.println("Daily Item-Wise Sales Submenu...\n1. Add\n2. Delete\n3. Edit\n0. Go back to Main Menu\n");
@@ -410,7 +414,7 @@ public final class Sales {
     }
     */
     
-    private void purchaseRequisition() {
+    public void purchaseRequisition() {
         System.out.println("List of Purchase Orders Submenu...");
         // Add submenu options and logic here
         System.out.println("Click Enter to Go Back Main Menu.");
@@ -426,7 +430,7 @@ public final class Sales {
         }
     }
     
-    private void listOfPurchaseOrders() {
+    public void listOfPurchaseOrders() {
         System.out.println("List of Purchase Orders Submenu...");
         // Add submenu options and logic here
         System.out.println("Click Enter to Go Back Main Menu.");
@@ -442,7 +446,7 @@ public final class Sales {
         }
     }
     
-    private void logout() {
+    public void logout() {
         running = false;
     }
     
