@@ -35,7 +35,12 @@ public class OODJ {
        else if("pm".equals((username))){
            System.out.println("Welcome!");
            PM pm = new PM(); 
+           
+       }
        
+       else if("pr".equals((username))){
+           System.out.println("Welcome!");
+           PR pr = new PR(); 
            
        }else{
            System.out.println("bye");
