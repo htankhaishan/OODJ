@@ -1,0 +1,4 @@
+Apple,Mr.Tom,tom@apple.com,+6012345678,KualaLumpur,apple.com
+Samsung,Ms.Ben,ben@samsung.com,+601987653,KualaLumpur,samsung.com
+MicroSoft,Mr.Jassar,jassar@microsoft.com,+608736213,KualaLumpur,microsoft.com
+
