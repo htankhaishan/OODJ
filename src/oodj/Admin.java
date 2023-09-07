@@ -9,80 +9,155 @@ package oodj;
  */
 
 //filepath
-// "/Users/ben/Documents/OOPJAVA/OODJ/username.txt"
+// "/Users/ben/Desktop/OODJ-main/username.txt"
 //"/Users/htankhaishan/Documents/2nd Year 1st Sem/Java/OODJ/username.txt"
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import static java.nio.file.StandardOpenOption.*;
+
 import java.util.Scanner;
 
-public class Admin {
+public class Admin extends Users{
     
-    Scanner s = new Scanner(System.in);
-    String filename = "/Users/ben/Documents/OOPJAVA/OODJ/username.txt";
+    Scanner sc = new Scanner(System.in);
+    String filename = "/Users/htankhaishan/Desktop/OODJ/username.txt";
+    private final UserInputUtility userInputUtility;
+    
+ 
+
     
     public Admin(){
+        this.userInputUtility = new UserInputUtility(sc);
         
         try{
-            System.out.println(" Welcome back ADMIN ");
-            System.out.println(" What do you what to do today! ");
-            System.out.println(" 1. Register Account ");
-            System.out.print(" please enter the number only :  ");
-            String choice = s.nextLine();
-            if(choice.equals("1")){
-                createaccount();
+            System.out.println("\n Welcome back ADMIN \n");
+            System.out.println("---------------------------------------------------\n");
+            System.out.println(" What do you what to do today! \n");
+            System.out.println("---------------------------------------------------\n");
+            System.out.println(" 1. Account Managment ");
+            System.out.println(" 2. Item Entry ");
+            System.out.println(" 3. Supplier Entry ");
+            System.out.println(" 4. Daily Item-wise Sales Entry ");
+            System.out.println(" 5. Purchase Requisition ");
+            System.out.println(" 6. Purchase Order ");
+            System.out.println(" 7. View Daily Report ");
+            
+            System.out.print(" \nplease enter  choice \n( the number only ) :  ");
+            String choice = sc.nextLine();
+            if(choice.equals("1")){ 
+                System.out.println("---------------------------------------------");
+                System.out.println("1. Registeration");
+                System.out.println("2. Delete User Account");
+                System.out.println("3. Edit User Account");
+                System.out.println("4. View User Account List");
+                System.out.println("---------------------------------------------");
+                System.out.print("Enter number here : ");
+                int select = sc.nextInt();
+                switch(select){
+                    case 1 : {
+                        super.viewUseraccount();
+                        super.createaccount();
+                        super.viewUseraccount();
+                        break;
+                    }
+                    case 2 :{
+                        System.out.println("\n------------ Delete User Account ------------\n");
+                        super.viewUseraccount();               
+                        sc.nextLine();
+                        System.out.print("Enter the Code of the Account User to delete : ");
+                        String accountCodeToDelete = sc.nextLine().trim();
+                        super.DeleteAccount(accountCodeToDelete);
+                        super.viewUseraccount();
+                        break;
+                    }
+                    case 3: {
+                        System.out.println("\n------------ Edit User Account ------------\n");
+                        super.viewUseraccount();
+                        sc.nextLine();
+                        System.out.print("\nEnter the Code of the user account to edit: ");
+                        String accountCodeToEdit = sc.nextLine();
+
+                        // Check if the item exists before asking for new information
+                        if (super.check(accountCodeToEdit)) {
+                            boolean confirmed = true;
+                            // Assuming you have a confirmed boolean variable set appropriately
+                            if (confirmed) {
+                                String newName = getUserInput("Enter new name: ");
+                                String newPassword = getUserInput("Enter new password: ");
+                                String newRole = getUserInput("Enter new role: ");
+
+                                // Proceed with the edit
+                                super.EditAccount(accountCodeToEdit, newName, newPassword, newRole);
+                            } else {
+                                System.out.println("\nEdit process canceled.\n");
+                            }
+                        } else {
+                            System.out.println("\nThere's no such user account to edit.\n");
+                        }
+                        super.viewUseraccount();
+                        break;
+                    }
+
+                    
+                    case 4 :{
+                        super.viewUseraccount();
+                        break;
+                    }
+                 
+                    default:
+                        System.out.println("Wrong Choice please enter only number");                       
+                 
+                }
+            
+            }
+            else if(choice.equals("2")){ 
                 
             }
-        }catch(Exception ex){
-            
-        }
-    }
-    
-    public void createaccount(){
-        try{
-            Path path = Paths.get(filename.toString());
-            OutputStream output = new BufferedOutputStream(Files.newOutputStream(path,APPEND));
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
-            System.out.print("What is a username : ");
-            String username = s.nextLine();
-            System.out.print("What is a password : ");
-            String password = s.nextLine();
-            System.out.print("What is the role : ");
-            String role = s.nextLine();
-            
-            writer.write(username + "," + password + "," + role);
-            writer.newLine();
-            System.out.println("Account has been saved successfully");
-            
-            writer.close();
-            output.close();
-            
-            System.out.print(" Do you want to continue the work (yes or no) : ");
-            String choice = s.nextLine();
-            if(choice.equals("yes"))
-                new Admin();
+            else if(choice.equals("3")){ 
                 
-            else if(choice.equals("no"))
-                System.out.print(" Thank you have a nice day! ");
+            }
+            else if(choice.equals("4")){ 
+                
+            }
+            else if(choice.equals("5")){ 
+                
+            }
+            else if(choice.equals("6")){ 
+                
+            }
+            else if(choice.equals("7")){ 
+                
+            }
             
-            else 
-                System.out.print(" wrong answer! ");
+            else{
+                System.out.println("wrong chose please inter the number only ");
+                new Admin();
+            }
             
+        sc.nextLine();
+
+        System.out.println("Do you want to continue as an Admin?");
+        System.out.print(" (Yes or No): ");
+        String con = sc.nextLine();
+        if (con.equalsIgnoreCase("yes")) {
+            new Admin();
+        }else {
+            System.out.println("Bye Admin, Have a nice day");
             
+        }  
             
-            
+              
+                
         }catch(Exception ex){
-            System.out.print(ex.getMessage());
+            
         }
+        
+   
+        
+        
     }
-    
-    
-    
-    
-    
+
+    private String getUserInput(String prompt) {
+        return userInputUtility.getUserInput(prompt);
+    }
     
     
 }
