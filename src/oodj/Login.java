@@ -58,9 +58,9 @@ public final class Login {
                 boolean found = false;
                 while((_temp=reader.readLine()) != null){
                     String[] account = _temp.split(",");
-                    _user = account[0];
-                    _pass = account[1];
-                    _role = account[2];
+                    _user = account[1];
+                    _pass = account[2];
+                    _role = account[3];
                     if(_user.equals(username) && _pass.equals(password)){
                         found = true;
                         break;
