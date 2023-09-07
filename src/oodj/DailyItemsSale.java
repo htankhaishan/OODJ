@@ -14,7 +14,7 @@ import java.time.format.*;
  * @author htankhaishan
  */
 public class DailyItemsSale extends manage {
-    private static final String FILENAME = "/Users/htankhaishan/Desktop/OODJ/dailyItemsSales.txt";
+    private static final String FILENAME = "/Users/ben/Desktop/OODJ/dailyItemsSales.txt";
     private final UserInputUtility userInputUtility; //Composition OOD method
     
     public DailyItemsSale() {
