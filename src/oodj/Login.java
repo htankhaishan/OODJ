@@ -14,14 +14,14 @@ import java.util.*;
 /**
  * @author BEN
 //filepath
-// "/Users/ben/Documents/OOPJAVA/OODJ/username.txt"
+// "/Users/ben/Desktop/OODJ/username.txt"
 //"/Users/htankhaishan/Documents/2nd Year 1st Sem/Java/OODJ/username.txt"
 */
 
 public final class Login {
     
     Scanner s = new Scanner(System.in);
-    String filename = "/Users/htankhaishan/Desktop/Backup OODJ/username.txt";
+    String filename = "/Users/ben/Desktop/OODJ/username.txt";
     String user; // Encapsulate the user attribute
     
     
@@ -58,9 +58,9 @@ public final class Login {
                 boolean found = false;
                 while((_temp=reader.readLine()) != null){
                     String[] account = _temp.split(",");
-                    _user = account[0];
-                    _pass = account[1];
-                    _role = account[2];
+                    _user = account[1];
+                    _pass = account[2];
+                    _role = account[3];
                     if(_user.equals(username) && _pass.equals(password)){
                         found = true;
                         break;
