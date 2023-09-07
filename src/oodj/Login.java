@@ -40,12 +40,13 @@ public final class Login {
     }
 
     public void LoginProcess() {
-        System.out.println("Login page");
+        System.out.println("\nWELCOME! TO PURCHASE ORDER MANAGEMENT SYSTEM (POM)\n");
+        System.out.println("--------------- Login Process ------------------");
         System.out.print("Username : ");
         String username = s.nextLine();
         System.out.print("Password : ");
         String password = s.nextLine();
-
+        
         try{
             Path path = Paths.get(filename);
             InputStream input = Files.newInputStream(path);
@@ -68,7 +69,7 @@ public final class Login {
                 }
                 
                 if(found){
-                    System.out.println("Login Successfully!\n ");
+                    System.out.println("------------- Login Successfully ---------------\n");
                     setUser(_role); // Use the setter method to set the user attribute
                 } else {
                     System.out.println("Invalid username or password or both\n");

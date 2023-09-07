@@ -17,7 +17,7 @@ import java.util.*;
 
 public class Items extends manage {
     
-    private static final String FILENAME = "/Users/htankhaishan/Desktop/OODJ/items.txt";
+    private static final String FILENAME = "/Users/ben/Desktop/OODJ/items.txt";
     private final UserInputUtility userInputUtility; // Composition OOD method
     
     public Items() {
