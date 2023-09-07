@@ -1,10 +1,2 @@
 # OODJ
-# OODJ
-# OODJ
-# OODJ
-# OODJ
-# OODJ
-# OODJ
-# OODJ
-# OODJ
-# OODJ
+Year 2 First Sem assignment
