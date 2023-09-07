@@ -19,7 +19,7 @@ public class Users {
     
 
     Scanner s = new Scanner(System.in);
-    String filename = "/Users/ben/Desktop/OODJ/username.txt";
+    String filename = "/Users/htankhaishan/Desktop/OODJ/username.txt";
     
    
     private String generateRandomItemCode() {
