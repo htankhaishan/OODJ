@@ -36,7 +36,7 @@ public class Admin extends Users{
             System.out.println(" 1. Account Managment ");
             System.out.println(" 2. Sales Manager ");
             System.out.println(" 3. Purchase Manager ");
-            System.out.println(" 7. View Daily Report ");
+            System.out.println(" 4. View Daily Report ");
             System.out.println("---------------------------------------------------");
             
             System.out.print(" please enter  choice ( the number only ) :  ");
@@ -131,7 +131,7 @@ public class Admin extends Users{
                 PM pm = new PM();
             }
             else if(choice.equals("4")){ 
-                
+                DailyReport report = new DailyReport();
             }
             
             
