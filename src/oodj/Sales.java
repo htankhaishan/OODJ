@@ -245,6 +245,97 @@ public final class Sales {
     }
     
     private void dailyItemsWiseSales() throws IOException {
+        while (true) {
+        System.out.println("Daily Item-Wise Sales Submenu...\n1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
+        System.out.print("Enter your choice: ");
+        String submenuChoiceStr = scanner.nextLine();
+        // Validate input before parsing
+        if (!submenuChoiceStr.matches("\\d+")) {
+            System.out.println("Invalid input. Please enter a number.");
+            continue;
+        }
+        int submenuChoice = Integer.parseInt(submenuChoiceStr);
+
+        switch (submenuChoice) {
+            case 1 -> {
+                System.out.println("View All Daily Item-Wise Sales.");
+                DailyItemsSale DIS = new DailyItemsSale();
+                DIS.view();
+                // Ask the user to enter something before breaking
+                System.out.println("Press Enter to continue...\n");
+                scanner.nextLine(); // Wait for user to press Enter
+            }
+            case 2 -> {
+                System.out.println("Input date (dd-mm-yyyy) to find Specific Daily Items Sale Information.");
+                DailyItemsSale DIS = new DailyItemsSale();
+                System.out.print("Enter a Date to search list of Daily-Wise Sale Items: ");
+                String filter = scanner.nextLine();
+                boolean itemsFound = DIS.view(filter);
+                if (!itemsFound) {
+                    System.out.println("\nNo such items.");
+                }
+            }
+            case 3 -> {
+                System.out.println("\nAdd Daily Item Sales.");
+                DailyItemsSale DIS = new DailyItemsSale();
+                DIS.add();
+            }
+            case 4 -> {
+                System.out.println("Delete Daily Item-Wise Sales.");
+                DailyItemsSale DIS = new DailyItemsSale();
+                DIS.view(); // Display the item list before deletion
+
+                System.out.print("Enter the Code of the Daily Item-Wise Sale item to delete (Enter to Cancel Process): ");
+                String itemCodeToDelete = scanner.nextLine().trim();
+
+                if (!itemCodeToDelete.isEmpty()) {
+                    DIS.delete(itemCodeToDelete);
+                } else {
+                    System.out.println("Deletion process canceled.\n");
+                }
+                break;
+            }
+            case 5 -> {
+                System.out.println("Edit Daily Item-Wise Sale Information...");
+                DailyItemsSale DIS = new DailyItemsSale();
+                DIS.view();
+                System.out.print("\nEnter the Code of the Daily Item-Wise Sale to edit: ");
+                String itemCodeToEdit = scanner.nextLine();
+
+                // Check if the item exists before asking for new information
+                if (DIS.check(itemCodeToEdit)) {
+                    // Get user input for editing and check confirmation
+                        boolean confirmed = getUserConfirmation(scanner);
+
+                        if (confirmed) {
+                            String newName = getUserInput("Enter new name: ");
+                            String newDescription = getUserInput("Enter new description: ");
+                            String newQty = getUserInput("Enter new Quantity: ");
+                            String newRev = getUserInput("Enter new Revenue: ");
+                            // Proceed with the edit
+                            DIS.edit(itemCodeToEdit, newName, newDescription, newQty, newRev);
+                        } else {
+                            System.out.println("\nEdit process canceled.\n");
+                        }
+                    } else {
+                    System.out.println("\nThere's no such item to edit.\n");
+                }
+            }
+
+
+            case 0 -> {
+                // Exit the loop to go back to the main menu
+                return;
+            }
+            default -> {
+                System.out.println("Invalid number. Please enter a valid option.");
+            }
+        }
+    }
+    }
+    
+    /*
+    private void dailyItemsWiseSales() throws IOException {
         boolean dailyItemsDisplayMenu = true;
         while (dailyItemsDisplayMenu) {
         System.out.println("Daily Item-Wise Sales Submenu...\n1. Add\n2. Delete\n3. Edit\n0. Go back to Main Menu\n");
@@ -317,7 +408,8 @@ public final class Sales {
         }
     }
     }
-        
+    */
+    
     private void purchaseRequisition() {
         System.out.println("List of Purchase Orders Submenu...");
         // Add submenu options and logic here

@@ -1,2 +1,3 @@
-1001,MacBookPro,1,8500
-1002,iPadPro2023,2,8000
+07-09-2023,82477PJI,MacBookPro,MacBookPro2023-14inches,1,8500
+07-09-2023,175298HX,LenovoThinkPadX1,LenovoThinkPadX12023-14inches,1,2000
+07-09-2023,573839FA,SonyPlayStation5,SonyPlayStation52023,1,600.0
