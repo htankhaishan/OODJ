@@ -20,6 +20,10 @@ import java.io.IOException;
 public class PR {
     private String itemCode, itemDes, quan;
     private static final String FILENAME = "/Users/htankhaishan/Documents/2nd Year 1st Sem/Java/OODJ/pr.txt";
+    
+    public PR(){
+        
+    }
 
     public PR(String itemCode, String itemDes, String quan) {
         
