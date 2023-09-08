@@ -67,6 +67,25 @@ public class DailyItemsSale extends manage {
             return now.format(formatter);
         }
     }
+    
+    // Generate a random 8-digit item code
+    private String generateRandomItemCode() {
+        long nanoTime = System.nanoTime();
+        String nanoTimeString = String.valueOf(nanoTime);
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder codeBuilder = new StringBuilder(nanoTimeString);
+        int randomCodeLength = 7;
+        for (int i = 0; i < randomCodeLength; i++) {
+            int randomIndex = random.nextInt(characters.length());
+            char randomChar = characters.charAt(randomIndex);
+            codeBuilder.append(randomChar);
+        }
+        return codeBuilder.toString().substring(10, 18);
+    }   
+    private String getUserInput(String prompt) {
+        return userInputUtility.getUserInput(prompt);
+    }
 
 
     @Override
@@ -79,8 +98,8 @@ public class DailyItemsSale extends manage {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String date = now.format(dateFormat);
 
-        System.out.print("Enter the item code: ");
-        String itemCode = scanner.nextLine();
+        // Generate a random 8-digit item code
+        String itemCode = generateRandomItemCode();
 
         System.out.print("Enter the item name: ");
         String itemName = scanner.nextLine();
