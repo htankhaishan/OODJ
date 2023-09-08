@@ -203,7 +203,7 @@ public class DailyItemsSale extends manage {
             }
     }
 
-    String separator = " --------------------------------------------------------------------------------------------------------";
+    String separator = " ---------------------------------------------------------------------------------------";
     String format = "| %-"+(maxColumnWidths[0]+3)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+6)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+3)+"s |";
 
     System.out.println("Daily Item-Wise Sales List:");
@@ -292,29 +292,30 @@ public class DailyItemsSale extends manage {
         }
     }
 
-    String separator = " " + "-".repeat(maxColumnWidths[0]);
-    for (int i = 1; i < numColumns; i++) {
-        separator += " " + "-".repeat(maxColumnWidths[i]);
-    }
+    
 
-    System.out.println("Daily Item-Wise Sales List:");
-    System.out.println(" ---------------------------------------------------------------------------------------------------");
-    System.out.printf("| %-"+maxColumnWidths[0]+"s | %-"+maxColumnWidths[1]+"s | %-"+maxColumnWidths[2]+"s | %-"+maxColumnWidths[3]+"s | %-"+maxColumnWidths[4]+"s | %-"+maxColumnWidths[5]+"s |\n","Date", "Code", "Name", "Description", "Qty", "Rev");
-    System.out.println(" ---------------------------------------------------------------------------------------------------");
-            
+    
+    
+        String separator = " ---------------------------------------------------------------------------------------------";
+        String format = "| %-"+(maxColumnWidths[0]+1)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+1)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s |";
 
-    if (!itemsFound) {
-        System.out.println("No items found.");
-    } else {
+        System.out.println("\nDaily Item-Wise Sales List:");     
+        System.out.println(separator);
+        System.out.printf(format,"Date", "Code", "Name", "Description", "Qty", "Revenue");
+        System.out.println();
+        System.out.println(separator);
+
         for (String[] dailyItemInfo : formattedDailyItemList) {
             if (dailyItemInfo[0].contains(filter)) {
-                System.out.printf("| %-"+maxColumnWidths[0]+"s | %-"+maxColumnWidths[1]+"s | %-"+maxColumnWidths[2]+"s | %-"+maxColumnWidths[3]+"s | %-"+maxColumnWidths[4]+"s | %-"+maxColumnWidths[5]+"s |\n", dailyItemInfo[0], dailyItemInfo[1], dailyItemInfo[2], dailyItemInfo[3], dailyItemInfo[4], dailyItemInfo[5]);
-                System.out.println(" ---------------------------------------------------------------------------------------\n");
+                System.out.printf(format,dailyItemInfo[0], dailyItemInfo[1], dailyItemInfo[2], dailyItemInfo[3], dailyItemInfo[4], dailyItemInfo[5]);
+                System.out.println();
+                itemsFound = true; // Set the flag if items are found
             }
         }
-    }
 
-    return itemsFound;
+        System.out.println(separator);
+
+        return itemsFound;
 }
     
     public void saveDailyToFile(String orderID, String productName, String quantitySold, String revenue) {

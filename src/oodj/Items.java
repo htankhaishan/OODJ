@@ -167,7 +167,7 @@ public class Items extends manage {
                 maxColumnWidths[i] = Math.max(maxColumnWidths[i], itemInfo[i].length());
             }
         }
-        String separator = " -------------------------------------------------------------------------------------------------------------------------";
+        String separator = " ----------------------------------------------------------------------------------------------";
         String format = "| %-"+(maxColumnWidths[0]+1)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+1)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s |";
 
         System.out.println("Item List:");
@@ -224,7 +224,7 @@ public class Items extends manage {
             }
         }
 
-        String separator = " -------------------------------------------------------------------------------------------------------------------------";
+        String separator = " ---------------------------------------------------------------------------------------------";
         String format = "| %-"+(maxColumnWidths[0]+1)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+1)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s |";
 
         System.out.println("Item List:");

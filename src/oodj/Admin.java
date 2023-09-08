@@ -35,12 +35,12 @@ public class Admin extends Users{
         try{
             
             
-            System.out.println("           _           _    ");   
-            System.out.println("         | |         (_)");      
-            System.out.println("  __ _  __| |_ __ ___  _ _ __  ");
-            System.out.println(" / _` |/ _` | '_ ` _ \\| | '_ \\ ");
-            System.out.println("| (_| | (_| | | | | | | | | | | ");
-            System.out.println(" \\__,_|\\__,_|_| |_| |_|_|_| |_|"); 
+            System.out.println("              _           _       _     _             _              ");   
+            System.out.println("     /\\      | |         (_)     (_)   | |           | |            ");      
+            System.out.println("    /  \\   __| |_ __ ___  _ _ __  _ ___| |_ _ __ __ _| |_ ___  _ __ ");
+            System.out.println("   / /\\ \\ / _` | '_ ` _ \\| | '_ \\| / __| __| '__/ _` | __/ _ \\| '__|");
+            System.out.println(" / ____ \\ (_| | | | | | | | | | | \\__ \\ |_| | | (_| | || (_) | |   ");
+            System.out.println("/_/    \\_\\__,_|_| |_| |_|_|_| |_|_|___/\\__|_|  \\__,_|\\__\\___/|_|    "); 
                                 
                                 
 

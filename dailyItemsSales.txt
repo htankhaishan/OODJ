@@ -1,3 +1,8 @@
-07-09-2023,82477PJI,MacBookPro,MacBookPro2023-14inches,1,8500
-07-09-2023,175298HX,LenovoThinkPadX1,LenovoThinkPadX12023-14inches,1,2000
-07-09-2023,573839FA,SonyPlayStation5,SonyPlayStation52023,1,600.0
+07-09-2023,82477PJI,Apples,Red delicious apples,22,50.00
+07-09-2023,60812ZIU,Oranges,Navel oranges,30,60.00
+07-09-2023,726462EA,Bananas,Cavendish bananas,40,70.00
+07-09-2023,826124YX,Milk,Whole milk,50,120.00
+07-09-2023,573839FA,Eggs,Grade A large eggs,40,300.00
+07-09-2023,941273PH,Bread,Whole wheat bread,30,55.00
+07-09-2023,685032KG,Cheese,Cheddar cheese,20,100.50
+07-09-2023,219725LD,Soda,Coca-Cola,30,70.00

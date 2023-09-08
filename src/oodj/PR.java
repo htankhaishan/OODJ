@@ -22,7 +22,7 @@ import java.time.format.*;
 import java.util.*;
 
 public class PR extends manage {
-    private static final String FILENAME = "/Users/htankhaishan/Desktop/OODJ/purchaseRequisitions.txt";
+    private static final String FILENAME = "/Users/ben/Desktop/OODJ/purchaseRequisitions.txt";
     private final UserInputUtility userInputUtility;
 
     public PR() {
@@ -227,41 +227,24 @@ public class PR extends manage {
             }
         }
 
-        String separator = " --------------------------------------------------------------------------------------------------------";
-        String format = "| %-" + (maxColumnWidths[0] + 3) + "s | %-" + (maxColumnWidths[1] + 2) + "s | %-" + (maxColumnWidths[2] + 2) + "s | %-" + (maxColumnWidths[3] + 6) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 3) + "s | %-" + (maxColumnWidths[6] + 3) + "s |";
+        String separator = " -----------------------------------------------------------------------------------------------------------------------";
+        String format = "| %-" + (maxColumnWidths[0] + 2) + "s | %-" + (maxColumnWidths[1] + 2) + "s | %-" + (maxColumnWidths[2] + 2) + "s | %-" + (maxColumnWidths[3] + 2) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 2) + "s | %-" + (maxColumnWidths[6] + 2) + "s |";
 
         System.out.println("Purchase Requisitions List:");
         System.out.println(separator);
-        System.out.printf(format, "Date", "Requester", "PR ID", "Product Name", "Quantity", "Price", "Description");
+        System.out.printf(format, "Date","Requester","PR ID","Product Name", "Qty", "Price", "Description");
         System.out.println();
         System.out.println(separator);
-
-        boolean itemsFound = false;
-
-        for (String pr : prList) {
-            String[] prInfo = pr.split(",");
-
-            if (prInfo.length >= numColumns) {
-                formattedPRList.add(prInfo);
-
-                for (int i = 0; i < numColumns; i++) {
-                    maxColumnWidths[i] = Math.max(maxColumnWidths[i], prInfo[i].length());
-                }
-
-                System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5], prInfo[6]);
-                System.out.println();
-                itemsFound = true;
-            } else {
-                System.out.println("Incomplete entry detected: " + pr);
-            }
+        
+        for (String[] prInfo : formattedPRList) {
+        System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5], prInfo[6]); // Displaying "Supplier ID"
+        System.out.println();
         }
 
         System.out.println(separator);
-
-        if (!itemsFound) {
-            System.out.println("No PRs found.");
-        }
     }
+
+    
 
     public static List<String> ReadPRListFromFile(String FILENAME) {
         List<String> prList = new ArrayList<>();
@@ -314,27 +297,25 @@ public class PR extends manage {
             }
         }
 
-        String separator = " " + "-".repeat(maxColumnWidths[0]);
-        for (int i = 1; i < numColumns; i++) {
-            separator += " " + "-".repeat(maxColumnWidths[i]);
-        }
+        
+        
+        String format = "| %-" + (maxColumnWidths[0] + 3) + "s | %-" + (maxColumnWidths[1] + 3) + "s | %-" + (maxColumnWidths[2] + 3) + "s | %-" + (maxColumnWidths[3] + 4) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 2) + "s |";
+        String separator = " ------------------------------------------------------------------------------------------------";
 
         System.out.println("Purchase Requisitions List:");
-        System.out.println(" ---------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-" + maxColumnWidths[0] + "s | %-" + maxColumnWidths[1] + "s | %-" + maxColumnWidths[2] + "s | %-" + maxColumnWidths[3] + "s | %-" + maxColumnWidths[4] + "s | %-" + maxColumnWidths[5] + "s |\n", "Date", "PR ID", "Product Name", "Description", "Qty", "Price");
-        System.out.println(" ---------------------------------------------------------------------------------------------------");
+        System.out.println(separator);        
+        System.out.printf(format, "Date","Requester","PR ID","Product Name", "Qty", "Price" );
+        System.out.println();
+        System.out.println(separator);
 
-        if (!itemsFound) {
-            System.out.println("No PRs found.");
-        } else {
-            for (String[] prInfo : formattedPRList) {
-                if (prInfo[0].contains(filter)) {
-                    System.out.printf("| %-" + maxColumnWidths[0] + "s | %-" + maxColumnWidths[1] + "s | %-" + maxColumnWidths[2] + "s | %-" + maxColumnWidths[3] + "s | %-" + maxColumnWidths[4] + "s | %-" + maxColumnWidths[5] + "s |\n", prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5]);
-                    System.out.println(" ---------------------------------------------------------------------------------------\n");
-                }
-            }
+        for (String[] prInfo : formattedPRList) {
+        System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5]); // Displaying "Supplier ID"
+        System.out.println();
         }
 
+        System.out.println(separator);
+        
+        
         return itemsFound;
     }
 
@@ -366,8 +347,8 @@ public class PR extends manage {
                 if (prID.equalsIgnoreCase(prIDToEdit)) {
                     // PR found, update its information
                     String currentDate = DateTimeGenerator.getCurrentDate(); // Get the current date
-                    String newPRData = currentDate + "," + requester + "," + prID + "," + newName + "," + newDescription + ","
-                            + newQuantity + "," + newPrice + "\n";
+                    String newPRData = currentDate + "," + requester + "," + prID + "," + newName + ","
+                            + newQuantity + "," + newPrice + "," + newDescription + "\n";
                     writer.write(newPRData);
                     prFound = true;
                 } else {

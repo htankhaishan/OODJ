@@ -123,8 +123,8 @@ public class Suppliers extends manage{
             System.out.println("\nPlease review the entered data:");
             System.out.println("Supplier ID: " + supCode);
             System.out.println("Supply Item: " + supItem);
-            System.out.println("Company Name: " + conname);
-            System.out.println("Name: " + supname);
+            System.out.println("Company Name: " + supname);
+            System.out.println("Name: " + conname);
             System.out.println("Price: " + supemail);
             System.out.println("Availability: " + supphone);
             System.out.println("Description: " + supaddr);
@@ -135,7 +135,7 @@ public class Suppliers extends manage{
             
             if (confirm.equals("yes") || confirm.equals("y")) {
                // Create a comma-separated string with the item data
-               String itemData = supCode + "," + supItem + "," + conname + "," + supname + "," + supemail + "," + supphone + "," + supaddr;
+               String itemData = supCode + "," + supItem + "," + supname + "," + conname + "," + supemail + "," + supphone + "," + supaddr;
                // Write the item data to the file
                bufferedWriter.write(itemData);
                bufferedWriter.newLine();
@@ -165,7 +165,7 @@ public class Suppliers extends manage{
         }
     }
 
-    String separator = " -----------------------------------------------------------------------------------------------------------------------------";
+    String separator = " ----------------------------------------------------------------------------------------------------------------------------------------";
     String format = "| %-"+(maxColumnWidths[0]+2)+"s | %-"+(maxColumnWidths[1]+3)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+2)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s | %-"+(maxColumnWidths[6]+6)+"s |"; // Adjusted to 7 columns
 
     System.out.println("Suppliers List:");
@@ -222,7 +222,7 @@ public class Suppliers extends manage{
         }
     }
 
-    String separator = " -------------------------------------------------------------------------------------------------------------------------------";
+    String separator = " ----------------------------------------------------------------------------------------------------------------------------------------";
     String format = "| %-"+(maxColumnWidths[0]+2)+"s | %-"+(maxColumnWidths[1]+3)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+2)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s | %-"+(maxColumnWidths[6]+6)+"s |"; // Adjusted to 7 columns
 
     System.out.println("Supplier List:");

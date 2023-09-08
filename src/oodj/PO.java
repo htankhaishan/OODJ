@@ -117,8 +117,8 @@ public void add() {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String date = now.format(dateFormat);
 
-        System.out.print("Enter Item Code from PR: ");
-        String itemCode = scanner.nextLine();
+        
+        String itemCode = generateRandomItemCode();
 
         System.out.print("Enter the product name: ");
         String productName = scanner.nextLine();
@@ -306,27 +306,26 @@ public void add() {
             }
         }
 
-        String separator = " " + "-".repeat(maxColumnWidths[0]);
-        for (int i = 1; i < numColumns; i++) {
-            separator += " " + "-".repeat(maxColumnWidths[i]);
-        }
+       
+        
+        
+        String format = "| %-" + (maxColumnWidths[0] + 3) + "s | %-" + (maxColumnWidths[1] + 3) + "s | %-" + (maxColumnWidths[2] + 3) + "s | %-" + (maxColumnWidths[3] + 4) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 2) + "s |";
+        String separator = " ------------------------------------------------------------------------------------------------";
 
-        System.out.println("Purchase Orders List:");
-        System.out.println(" -----------------------------------------------------------------------------------------------------------------------------");
-        System.out.printf("| %-" + (maxColumnWidths[0] + 3) + "s | %-" + (maxColumnWidths[1] + 2) + "s | %-" + (maxColumnWidths[2] + 2) + "s | %-" + (maxColumnWidths[3] + 6) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 3) + "s | %-" + (maxColumnWidths[6] + 3) + "s |\n", "Date", "Supplier", "PO ID", "Product Name", "Qty", "Price", "Description");
+        System.out.println("Purchase Requisitions List:");
+        System.out.println(separator);        
+        System.out.printf(format, "Date","PR ID","Product Name","Supplier", "Qty", "Price" );
+        System.out.println();
         System.out.println(separator);
 
-        if (!itemsFound) {
-            System.out.println("No POs found.");
-        } else {
-            for (String[] poInfo : formattedPOList) {
-                if (poInfo[0].contains(filter)) {
-                    System.out.printf("| %-" + (maxColumnWidths[0] + 3) + "s | %-" + (maxColumnWidths[1] + 2) + "s | %-" + (maxColumnWidths[2] + 2) + "s | %-" + (maxColumnWidths[3] + 6) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 3) + "s | %-" + (maxColumnWidths[6] + 3) + "s |\n", poInfo[0], poInfo[1], poInfo[2], poInfo[3], poInfo[4], poInfo[5], poInfo[6]);
-                    System.out.println(separator);
-                }
-            }
+        for (String[] prInfo : formattedPOList) {
+        System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5]); // Displaying "Supplier ID"
+        System.out.println();
         }
 
+        System.out.println(separator);
+        
+        
         return itemsFound;
     }
 

@@ -36,12 +36,14 @@ public final class PM {
     
     private void displayMenu() {
 
-        System.out.println("  _____       _   ");        
-        System.out.println(" / ____|     | |     ");     
-        System.out.println("| (___   __ _| | ___  ___ ");
-        System.out.println(" \\___ \\ / _` | |/ _ \\/ __| ");
-        System.out.println(" ____) | (_| | |  __/\\__ \\");
-        System.out.println("|_____/ \\__,_|_|\\___||___/");                   
+        System.out.println("  _____                _                      __  __                                  ");        
+        System.out.println(" |  __ \\              | |                    |  \\/  |                                 ");     
+        System.out.println(" | |__) |   _ _ __ ___| |__   __ _ ___  ___  | \\  / | __ _ _ __   __ _  __ _  ___ _ __");
+        System.out.println(" |  ___/ | | | '__/ __| '_ \\ / _` / __|/ _ \\ | |\\/| |/ _` | '_ \\ / _` |/ _` |/ _ \\ '__|");
+        System.out.println(" | |   | |_| | | | (__| | | | (_| \\__ \\  __/ | |  | | (_| | | | | (_| | (_| |  __/ |   ");
+        System.out.println(" |_|    \\__,_|_|  \\___|_| |_|\\__,_|___/\\___| |_|  |_|\\__,_|_| |_|\\__,_|\\__, |\\___|_|   ");                   
+        System.out.println("                                                                        __/ |          ");
+        System.out.println("                                                                       |___/          ");
         System.out.println("\n---------------------------------------------------");
         System.out.println("What do you want to do today!");
         System.out.println("---------------------------------------------------");
@@ -130,7 +132,7 @@ public final class PM {
     public void supplierEntry() throws IOException {
     while (true) {
         System.out.println("\n----------------- Suppliers Entry Menu -----------------");
-        System.out.println("1. View Suppliers.\n2. Find Specific Suppliers by Company Name.\n0. Go back to Main Menu\n----------------------------------------------------------\n");
+        System.out.println("1. View Suppliers.\n2. Find Specific Suppliers by item Name.\n0. Go back to Main Menu\n----------------------------------------------------------\n");
         System.out.print("\nEnter your choice: ");    
         String submenuChoiceStr = scanner.nextLine();
 
@@ -153,7 +155,7 @@ public final class PM {
             case 2 -> {
                 System.out.println("\n-------------- Find Specific Suppliers by Company Name -------------- ");
                 Suppliers suppliers = new Suppliers();
-                System.out.print("\nEnter a company name to search suppliers: ");
+                System.out.print("\nEnter a item Name : ");
                 String filter = scanner.nextLine();
                 boolean suppliersFound = suppliers.view(filter);
                 if (!suppliersFound) {
@@ -172,7 +174,7 @@ public final class PM {
   
     public void purchaseRequisition() {
         while (true) {
-        System.out.println("\n----------------- Purchase Requisition Menu -----------------\n1. View Suppliers.\n2. Find Specific Suppliers by Company Name.\n0. Go back to Main Menu\n----------------------------------------------------------\n");
+        System.out.println("\n----------------- Purchase Requisition Menu -----------------\n1. View Purchase Requisition\n2. Find Specific Purchase Requisition by Date.\n0. Go back to Main Menu\n----------------------------------------------------------\n");
         System.out.print("Enter your choice: ");
         String submenuChoiceStr = scanner.nextLine();
         // Validate input before parsing
@@ -214,7 +216,7 @@ public final class PM {
     
     public void listOfPurchaseOrders() {
     while (true) {
-        System.out.println("\n----------------- Purchase Order List Menu -----------------\n1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
+        System.out.println("\n----------------- Purchase Order Menu -----------------\n1. View Purchase Order List\n2. Find Purchase Order\n3. Add Purchase Order\n4. Delete Purchase Order\n5. Edit Purchase Order\n0. Go back to Main Menu\n");
         System.out.print("Enter your choice: ");
         String submenuChoiceStr = scanner.nextLine();
         // Validate input before parsing

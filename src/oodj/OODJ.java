@@ -18,10 +18,13 @@ public class OODJ {
      */
     public static void main(String[] args) throws IOException  {
        
-        System.out.println("\n.----.  .----. .-.   .-.");
-        System.out.println("| {}  }/  {}  \\|  `.'  |");
-        System.out.println("| .--' \\      /| |\\ /| |");
-        System.out.println("`-'     `----' `-' ` `-'");
+        System.out.println("\n  _____   ____  __  __ ");
+        System.out.println(" |  __ \\ / __ \\|  \\/  |");
+        System.out.println(" | |__) | |  | | \\  / |");
+        System.out.println(" |  ___/| |  | | |\\/| |");
+        System.out.println(" | |    | |__| | |  | |");
+        System.out.println(" |_|     \\____/|_|  |_|");
+        
         System.out.println("\n----------------------------------------");
         System.out.println("PURCHASE ORDER MANAGEMENT SYSTEM (POM)");
         System.out.println("----------------------------------------");
