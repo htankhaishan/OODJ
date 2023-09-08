@@ -82,6 +82,9 @@ public final class Sales {
                 }
             }
         }
+        Login login = new Login(); // Create an instance of the Login class
+        login.start(); // Start the login process
+        
         System.out.println("Logged out Successfully. Goodbye!");
     }
 
@@ -496,94 +499,7 @@ public final class Sales {
             }
         }
         
-        /*
-        System.out.print("Enter your choice: ");
-        System.out.println("1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
-        String submenuChoiceStr = scanner.nextLine();
-        // Validate input before parsing
-        if (!submenuChoiceStr.matches("\\d+")) {
-            System.out.println("Invalid input. Please enter a number.");
-            continue;
-        }
-        int submenuChoice = Integer.parseInt(submenuChoiceStr);
-            
         
-        switch (submenuChoice) {
-            case 1 -> {
-                System.out.println("\nView All Purchase Orders.");
-                PO po = new PO();
-                po.view();
-                // Ask the user to enter something before breaking
-                System.out.println("Press Enter to continue...\n");
-                scanner.nextLine(); // Wait for the user to press Enter
-            }
-            case 2 -> {
-                System.out.println("Input date (dd-mm-yyyy) to find Specific Purchase Order Information.");
-                PO po = new PO();
-                System.out.print("Enter a Date to search for Purchase Orders: ");
-                String filter = scanner.nextLine();
-                boolean itemsFound = po.view(filter);
-                if (!itemsFound) {
-                    System.out.println("\nNo purchase orders found for the given date.");
-                }
-            }
-            case 3 -> {
-                System.out.println("\nCreate a New Purchase Order.");
-                PO po = new PO();
-                po.add();
-            }
-            case 4 -> {
-                System.out.println("Delete Purchase Order.");
-                PO po = new PO();
-                po.view(); // Display the list of purchase orders before deletion
-
-                System.out.print("Enter the Purchase Order ID to delete (Press Enter to Cancel): ");
-                String poIDToDelete = scanner.nextLine().trim();
-
-                if (!poIDToDelete.isEmpty()) {
-                    po.delete(poIDToDelete);
-                } else {
-                    System.out.println("Deletion process canceled.\n");
-                }
-            }
-            case 5 -> {
-            System.out.println("\n-------------- Edit Purchase Order Information -------------- ");
-            PO po = new PO();
-            po.view();
-            System.out.print("\nEnter the Item Code of the Purchase Order to edit: ");
-            String itemCodeToEdit = scanner.nextLine();
-
-            // Check if the purchase order exists before asking for new information
-            if (po.check(itemCodeToEdit)) {
-                // Get user input for editing and check confirmation
-                boolean confirmed = getUserConfirmation(scanner);
-
-                if (confirmed) {
-                    String newProductName = getUserInput("Enter new product name: ");
-                    String newSupplier = getUserInput("Enter new supplier: ");
-                    String newQuantity = getUserInput("Enter new quantity: ");
-                    String newPrice = getUserInput("Enter new price: ");
-                    String newDescription = getUserInput("Enter new description: ");
-
-                    // Proceed with the edit
-                    po.edit(itemCodeToEdit, newProductName, newSupplier, newQuantity, newPrice, newDescription);
-                } else {
-                    System.out.println("\nEdit process canceled.\n");
-                }
-            } else {
-                System.out.println("\nThere's no such purchase order to edit.\n");
-            }
-            }
-
-            case 0 -> {
-                // Exit the loop to go back to the main menu
-                return;
-            }
-            default -> {
-                System.out.println("Invalid number. Please enter a valid option.");
-            }
-        }
-    */
     }
     }
 
