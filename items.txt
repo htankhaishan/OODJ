@@ -18,3 +18,4 @@
 219725LD, Olive oil, Oils, 10.99, Available, Extra virgin olive oil
 357682ZT, Rice, Grains, 1.99, Available, White rice
 468691MW, Beans, Legumes, 1.49, Available, Black beans
+69822IYA,Nestle Coffee,Coffee,20,Available,Black Coffee

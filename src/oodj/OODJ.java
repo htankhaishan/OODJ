@@ -27,8 +27,8 @@ public class OODJ {
         System.out.println("----------------------------------------");
 
 
-       Login login = new Login();
-       String username = login.user;
+        Login login = new Login();
+        String username = login.user;
        
        if ("admin".equals(username)){
            System.out.println("Welcome!");
