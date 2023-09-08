@@ -20,7 +20,7 @@ import java.io.*;
 */
 public class order {
     Scanner sc = new Scanner(System.in);
-    String filename = "/Users/htankhaishan/Documents/2nd Year 1st Sem/Java/OODJ/order.txt";
+    String filename = "/Users/ben/Desktop/OODJ/order.txt";
 
     
     public order(){
