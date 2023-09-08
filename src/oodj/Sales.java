@@ -365,34 +365,16 @@ public final class Sales {
     }
     }
     
-<<<<<<< HEAD
-    public void purchaseRequisition() throws IOException {
-    while (true) {
-        System.out.println("Purchase Requisition Submenu...\n1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
+    public void purchaseRequisition() {
+        while (true) {
+        System.out.println("\n----------------- Purchase Requisition Menu -----------------");
         System.out.print("Enter your choice: ");
         String submenuChoiceStr = scanner.nextLine();
-        
         // Validate input before parsing
         if (!submenuChoiceStr.matches("\\d+")) {
             System.out.println("Invalid input. Please enter a number.");
             continue;
-=======
-    public void purchaseRequisition() {
-        System.out.println("\n----------------- Purchase Requisition Menu -----------------");
-        // Add submenu options and logic here
-        System.out.println("Click Enter to Go Back Main Menu.");
-        String submenuChoice = scanner.nextLine();
-        if (submenuChoice.isEmpty()) {
-            System.out.print("Go back to Main Menu? (Yes/No): ");
-            String yesNo = scanner.nextLine().toLowerCase();
-            if (yesNo.equals("yes")) {
-                displayMenu = true; // Go back to the main menu
-            }
-        } else {
-            System.out.println("Invalid number. Please enter a valid option.");
->>>>>>> b2c7da1233c9e47346dd9f0211816688a4319c11
         }
-        
         int submenuChoice = Integer.parseInt(submenuChoiceStr);
 
         switch (submenuChoice) {
