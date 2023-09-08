@@ -17,6 +17,15 @@ public class OODJ {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException  {
+       
+        System.out.println("\n.----.  .----. .-.   .-.");
+        System.out.println("| {}  }/  {}  \\|  `.'  |");
+        System.out.println("| .--' \\      /| |\\ /| |");
+        System.out.println("`-'     `----' `-' ` `-'");
+        System.out.println("\n----------------------------------------");
+        System.out.println("PURCHASE ORDER MANAGEMENT SYSTEM (POM)");
+        System.out.println("----------------------------------------");
+
 
        Login login = new Login();
        String username = login.user;

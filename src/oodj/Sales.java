@@ -37,6 +37,13 @@ public final class Sales {
     }
 
     private void displayMenu() {
+
+        System.out.println("  _____       _   ");        
+        System.out.println(" / ____|     | |     ");     
+        System.out.println("| (___   __ _| | ___  ___ ");
+        System.out.println(" \\___ \\ / _` | |/ _ \\/ __| ");
+        System.out.println(" ____) | (_| | |  __/\\__ \\");
+        System.out.println("|_____/ \\__,_|_|\\___||___/");                   
         System.out.println("\n---------------------------------------------------");
         System.out.println("What do you want to do today!");
         System.out.println("---------------------------------------------------");
@@ -80,7 +87,9 @@ public final class Sales {
 
     public void itemEntry() throws IOException {
     while (true) {
-        System.out.println("\nItem Entry Submenu...\n1. View Items.\n2. Find Specific Items with Name.\n3. Add New Items.\n4. Delete Items.\n5. Edit Item Informations.\n0. Go back to Main Menu\n");
+        System.out.println("\n----------------- Item Entry Menu -----------------");
+        System.out.println("\n1. View Items.\n2. Find Specific Items with Name.\n3. Add New Items.\n4. Delete Items.\n5. Edit Item Informations.\n0. Go back to Main Menu\n");
+        System.out.println("---------------------------------------------------");
         System.out.print("Enter your choice: ");
 
         String submenuChoiceStr = scanner.nextLine();
@@ -95,15 +104,15 @@ public final class Sales {
 
         switch (submenuChoice) {
             case 1 -> {
-                System.out.println("View All Items.");
+                System.out.println("\n-------------- View All Items -------------- ");
                 Items items = new Items();
                 items.view();
                 // Ask the user to enter something before breaking
                 System.out.println("Press Enter to continue...\n");
                 scanner.nextLine(); // Wait for user to press Enter
             }
-            case 2 -> {
-                System.out.println("Find Specific Item Information.");
+            case 2 -> {     
+                System.out.println("\n-------------- Find Specific Item Information -------------- ");
                 Items items = new Items();
                 System.out.print("Enter a keyword to search for specific items: ");
                 String filter = scanner.nextLine();
@@ -113,12 +122,12 @@ public final class Sales {
                 }
             }
             case 3 -> {
-                System.out.println("\nAdd New Items.");
+                System.out.println("\n-------------- Add New Items -------------- ");
                 Items items = new Items();
                 items.add();
             }
             case 4 -> {
-                System.out.println("Delete item ...");
+                System.out.println("\n-------------- Delete item -------------- ");
                 Items items = new Items();
                 items.view(); // Display the item list before deletion
 
@@ -133,7 +142,7 @@ public final class Sales {
                 break;
             }
             case 5 -> {
-                System.out.println("Edit Item Information...");
+                System.out.println("\n-------------- Edit Item Information -------------- ");
                 Items item = new Items();
                 item.view();
                 System.out.print("\nEnter the Code of the item to edit: ");
@@ -145,11 +154,13 @@ public final class Sales {
                         boolean confirmed = getUserConfirmation(scanner);
 
                         if (confirmed) {
+                            System.out.println("\n-------------- New Item Information -------------- ");
                             String newName = getUserInput("Enter new name: ");
                             String newCategory = getUserInput("Enter new category: ");
                             String newPrice = getUserInput("Enter new price: ");
                             String newAvailability = getUserInput("Enter Available or NoStock: ");
                             String newDescription = getUserInput("Enter new description: ");
+                            System.out.println("---------------------------------------------------");
 
                             // Proceed with the edit
                             item.edit(itemCodeToEdit, newName, newCategory, newPrice, newAvailability, newDescription);
@@ -175,14 +186,14 @@ public final class Sales {
         
     public void supplierEntry() throws IOException {
     while (true) {
-        System.out.println("Supplier Entry Submenu...");
+        System.out.println("\n----------------- Suppliers Entry Menu -----------------");
         System.out.println("1. View Suppliers.");
         System.out.println("2. Find Specific Suppliers by Company Name.");
         System.out.println("3. Add Supplier.");
         System.out.println("4. Delete Supplier Information.");
         System.out.println("5. Edit Supplier Information.");
         System.out.println("0. Go back to Main Menu");
-        System.out.println("---------------------------------------------------");
+        System.out.println("----------------------------------------------------------");
         System.out.print("\nEnter your choice: ");
         
         String submenuChoiceStr = scanner.nextLine();
@@ -197,14 +208,14 @@ public final class Sales {
 
         switch (submenuChoice) {
             case 1 -> {
-                System.out.println("\nView All Suppliers.\n");
+                System.out.println("\n-------------- View All Suppliers -------------- ");
                 Suppliers suppliers = new Suppliers();
                 suppliers.view();
                 System.out.println("\nPress Enter to continue...\n");
                 scanner.nextLine(); // Wait for user to press Enter
             }
             case 2 -> {
-                System.out.println("\nFind Specific Suppliers by Company Name.");
+                System.out.println("\n-------------- Find Specific Suppliers by Company Name -------------- ");
                 Suppliers suppliers = new Suppliers();
                 System.out.print("\nEnter a company name to search suppliers: ");
                 String filter = scanner.nextLine();
@@ -214,12 +225,12 @@ public final class Sales {
                 }
             }
             case 3 -> {
-                System.out.println("\nAdd New Supplier Information.\n");
+                System.out.println("\n-------------- Add New Supplier Information -------------- ");
                 Suppliers suppliers = new Suppliers();
                 suppliers.add();
             }
             case 4 -> {
-                System.out.println("\nDelete Supplier Information.\n");
+                System.out.println("\n-------------- Delete Supplier Information -------------- ");
                 Suppliers suppliers = new Suppliers();
                 suppliers.view();
                 System.out.print("\nEnter the name of the Supplier Name to delete: ");
@@ -227,7 +238,7 @@ public final class Sales {
                 suppliers.delete(supNameToDelete);
             }
             case 5 -> {
-                System.out.println("Edit Supplier Information...");
+                System.out.println("\n-------------- Edit Supplier Information -------------- ");
                 Suppliers suppliers = new Suppliers();
                 suppliers.view();
                 System.out.print("Enter the Supplier ID to edit Supplier Information: ");
@@ -236,12 +247,14 @@ public final class Sales {
                     boolean confirmed = getUserConfirmation(scanner);
 
                     if (confirmed) {
+                        System.out.println("\n-------------- New Suppliers Information -------------- ");
                         String newSupplierName = getUserInput("Enter new Supplier name: ");
                         String newSupplierContact = getUserInput("Enter new Supplier Contact: ");
                         String newSupplierEmail = getUserInput("Enter new Supplier Email: ");
                         String newSupplierPhone = getUserInput("Enter new Supplier Phone: ");
                         String newSupplierAddress = getUserInput("Enter new Supplier Address: ");
                         String newSupplierWebsite = getUserInput("Enter new Supplier Website: ");
+                        System.out.println("------------------------------------------------------- ");
 
                         suppliers.edit(supplierIdToEdit, newSupplierName, newSupplierContact, newSupplierEmail, newSupplierPhone, newSupplierAddress, newSupplierWebsite);
                     } else {
@@ -263,7 +276,8 @@ public final class Sales {
   
     public void dailyItemsWiseSales() throws IOException {
         while (true) {
-        System.out.println("Daily Item-Wise Sales Submenu...\n1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
+        System.out.println("\n----------------- Daily Item-Wise Sales Menu -----------------");
+        System.out.println("1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
         System.out.print("Enter your choice: ");
         String submenuChoiceStr = scanner.nextLine();
         // Validate input before parsing
@@ -275,7 +289,7 @@ public final class Sales {
 
         switch (submenuChoice) {
             case 1 -> {
-                System.out.println("View All Daily Item-Wise Sales.");
+                System.out.println("\n-------------- View All Daily Item-Wise Sales -------------- ");
                 DailyItemsSale DIS = new DailyItemsSale();
                 DIS.view();
                 // Ask the user to enter something before breaking
@@ -283,9 +297,9 @@ public final class Sales {
                 scanner.nextLine(); // Wait for user to press Enter
             }
             case 2 -> {
-                System.out.println("Input date (dd-mm-yyyy) to find Specific Daily Items Sale Information.");
+                System.out.println("\n-------------- to find Specific Daily Items Sale Information -------------- ");
                 DailyItemsSale DIS = new DailyItemsSale();
-                System.out.print("Enter a Date to search list of Daily-Wise Sale Items: ");
+                System.out.print("Enter a Date to search list of Daily-Wise Sale Items (dd-mm-yyyy): ");
                 String filter = scanner.nextLine();
                 boolean itemsFound = DIS.view(filter);
                 if (!itemsFound) {
@@ -293,12 +307,12 @@ public final class Sales {
                 }
             }
             case 3 -> {
-                System.out.println("\nAdd Daily Item Sales.");
+                System.out.println("\n-------------- Add Daily Item Sales -------------- ");
                 DailyItemsSale DIS = new DailyItemsSale();
                 DIS.add();
             }
             case 4 -> {
-                System.out.println("Delete Daily Item-Wise Sales.");
+                System.out.println("\n-------------- Delete Daily Item-Wise Sales -------------- ");
                 DailyItemsSale DIS = new DailyItemsSale();
                 DIS.view(); // Display the item list before deletion
 
@@ -313,7 +327,7 @@ public final class Sales {
                 break;
             }
             case 5 -> {
-                System.out.println("Edit Daily Item-Wise Sale Information...");
+                System.out.println("\n-------------- Edit Daily Item-Wise Sale Information -------------- ");
                 DailyItemsSale DIS = new DailyItemsSale();
                 DIS.view();
                 System.out.print("\nEnter the Code of the Daily Item-Wise Sale to edit: ");
@@ -351,6 +365,7 @@ public final class Sales {
     }
     }
     
+<<<<<<< HEAD
     public void purchaseRequisition() throws IOException {
     while (true) {
         System.out.println("Purchase Requisition Submenu...\n1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
@@ -361,6 +376,21 @@ public final class Sales {
         if (!submenuChoiceStr.matches("\\d+")) {
             System.out.println("Invalid input. Please enter a number.");
             continue;
+=======
+    public void purchaseRequisition() {
+        System.out.println("\n----------------- Purchase Requisition Menu -----------------");
+        // Add submenu options and logic here
+        System.out.println("Click Enter to Go Back Main Menu.");
+        String submenuChoice = scanner.nextLine();
+        if (submenuChoice.isEmpty()) {
+            System.out.print("Go back to Main Menu? (Yes/No): ");
+            String yesNo = scanner.nextLine().toLowerCase();
+            if (yesNo.equals("yes")) {
+                displayMenu = true; // Go back to the main menu
+            }
+        } else {
+            System.out.println("Invalid number. Please enter a valid option.");
+>>>>>>> b2c7da1233c9e47346dd9f0211816688a4319c11
         }
         
         int submenuChoice = Integer.parseInt(submenuChoiceStr);
@@ -443,7 +473,7 @@ public final class Sales {
     }
     
     public void listOfPurchaseOrders() {
-        System.out.println("List of Purchase Orders Submenu...");
+        System.out.println("\n-------------- List of Purchase Orders Submenu -------------- ");
         // Add submenu options and logic here
         System.out.println("Click Enter to Go Back Main Menu.");
         String submenuChoice = scanner.nextLine();
