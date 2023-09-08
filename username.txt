@@ -2,4 +2,6 @@ A1963,admin,admin,admin
 95839,sales,sales,sales
 58317,pm,pm,pm
 791C6,pr,pr,pr
-7088B,test,test,sales
+7505B,tom,tom,sales
+
+20848,john,john,pm

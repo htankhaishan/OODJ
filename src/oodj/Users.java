@@ -46,12 +46,18 @@ public class Users {
 
         for (String account : accountList) {
         String[] accountInfo = account.split(",");
+        
+        // Check if the accountInfo array has the expected number of elements (4)
+        if (accountInfo.length != numColumns) {
+            continue; // Skip this entry and continue with the next one
+        }
+
         formattedItemList.add(accountInfo);
 
-            for (int i = 0; i < numColumns; i++) {
-                maxColumnWidths[i] = Math.max(maxColumnWidths[i], accountInfo[i].length());
-            }
+        for (int i = 0; i < numColumns; i++) {
+            maxColumnWidths[i] = Math.max(maxColumnWidths[i], accountInfo[i].length());
         }
+    }
 
         String separator = " -------------------------------------------";
         String format = "| %-"+(maxColumnWidths[0]+1)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+1)+"s |";
@@ -69,7 +75,7 @@ public class Users {
 
         System.out.println(separator);
     
-        }
+    }
     
     public static List<String> ReadItemListFromFile(String FILENAME){
             List<String> accountList = new ArrayList<>();
@@ -81,7 +87,7 @@ public class Users {
             } catch (IOException e) {
             }
             return accountList;
-        }
+    }
     
 
     
@@ -102,7 +108,7 @@ public class Users {
             writer.newLine();
             System.out.println("Account has been saved successfully");
             System.out.println("\n------------------------------------------------\n");
-            viewUseraccount();
+            
             writer.close();
             output.close();
             
@@ -140,12 +146,14 @@ public class Users {
                 accountDeleted = true;
             }
         }
+        
         if (accountDeleted) {
             System.out.println("\nAccount deleted successfully.\n");
             
         } else {
             System.out.println("\nNot have the User Account.\n");
         }
+        
         } catch (IOException e) {
             System.out.println("\nAn error occurred while deleting the User Account.\n");
         }

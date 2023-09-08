@@ -18,7 +18,7 @@ import java.util.*;
 
 public class Suppliers extends manage{
     
-    private static final String FILENAME = "/Users/htankhaishan/Desktop/OODJ/suppliers.txt";
+    private static final String FILENAME = "/Users/ben/Desktop/OODJ/suppliers.txt";
     
     private final UserInputUtility userInputUtility; // Composition OOD method
     
