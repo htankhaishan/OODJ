@@ -18,7 +18,7 @@ import java.util.*;
 
 public class Suppliers extends manage{
     
-    private static final String FILENAME = "/Users/ben/Desktop/OODJ/suppliers.txt";
+    private static final String FILENAME = "/Users/htankhaishan/Desktop/OODJ/suppliers.txt";
     
     private final UserInputUtility userInputUtility; // Composition OOD method
     
@@ -26,7 +26,7 @@ public class Suppliers extends manage{
         this.userInputUtility = new UserInputUtility(new Scanner(System.in)); // Initialize the UserInputUtility
     }
     
-    private String supname, conname, supemail, supphone, supaddr, supweb;
+    private String supname, conname, supemail, supphone, supaddr, supItem;
 
     public String getSupname() {
         return supname;
@@ -68,17 +68,17 @@ public class Suppliers extends manage{
         this.supaddr = supaddr;
     }
 
-    public String getSupweb() {
-        return supweb;
+    public String getSupItem() {
+        return supItem;
     }
 
-    public void setSupweb(String supweb) {
-        this.supweb = supweb;
+    public void setSupItem(String supItem) {
+        this.supItem = supItem;
     }
     
     @Override
     public String toString() {
-        return supname + conname + supemail + supphone + supaddr + supweb;
+        return supname + conname + supemail + supphone + supaddr + supItem;
     }
     
     private String generateRandomItemCode() {
@@ -105,29 +105,29 @@ public class Suppliers extends manage{
         try (FileWriter writer = new FileWriter(FILENAME, true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
             // Prompt the user for item information
+            String supCode = generateRandomItemCode();
             Scanner scanner = new Scanner(System.in);
+            System.out.print("Enter Supply Items: ");
+            String supItem = scanner.nextLine();
             System.out.print("Enter Supplier Company Name: ");
             String supname = scanner.nextLine();
             System.out.print("Enter Contact Person: ");
             String conname = scanner.nextLine();
-            String supCode = generateRandomItemCode();
             System.out.print("Enter Email: ");
             String supemail = scanner.nextLine();
             System.out.print("Enter Phone: ");
             String supphone = scanner.nextLine();
             System.out.print("Enter Address: ");
             String supaddr = scanner.nextLine();
-            System.out.print("Enter Website: ");
-            String supweb = scanner.nextLine();
             
             System.out.println("\nPlease review the entered data:");
             System.out.println("Supplier ID: " + supCode);
+            System.out.println("Supply Item: " + supItem);
+            System.out.println("Company Name: " + conname);
             System.out.println("Name: " + supname);
-            System.out.println("Category: " + conname);
             System.out.println("Price: " + supemail);
             System.out.println("Availability: " + supphone);
             System.out.println("Description: " + supaddr);
-            System.out.println("Product Code: " + supweb);
             
             
             System.out.print("\nDo you want to save this Supplier Information? Please checks before you proceed. (Y/N): ");
@@ -135,7 +135,7 @@ public class Suppliers extends manage{
             
             if (confirm.equals("yes") || confirm.equals("y")) {
                // Create a comma-separated string with the item data
-               String itemData = supCode + "," + supname + "," + conname + "," + supemail + "," + supphone + "," + supaddr + "," + supweb;
+               String itemData = supCode + "," + supItem + "," + conname + "," + supname + "," + supemail + "," + supphone + "," + supaddr;
                // Write the item data to the file
                bufferedWriter.write(itemData);
                bufferedWriter.newLine();
@@ -170,7 +170,7 @@ public class Suppliers extends manage{
 
     System.out.println("Suppliers List:");
     System.out.println(separator);
-    System.out.printf(format, "SupplierID", "Company", "Supplier", "Email", "Phone Number", "Address", "Website"); // Added "Supplier ID" column
+    System.out.printf(format, "SupplierID", "Item", "Company","Supplier Name", "Email", "Phone Number", "Address"); // Added "Supplier ID" column
     System.out.println();
     System.out.println(separator);
 
@@ -227,7 +227,8 @@ public class Suppliers extends manage{
 
     System.out.println("Supplier List:");
     System.out.println(separator);
-    System.out.printf(format, "SupplierID", "Company", "Supplier", "Email", "Phone", "Address", "Website"); // Added "Supplier ID" column
+    System.out.printf(format, "SupplierID", ""
+            + "Item", "Company","Supplier Name", "Email", "Phone Number", "Address"); // Added "Supplier ID" column
     System.out.println();
     System.out.println(separator);
 
@@ -287,7 +288,7 @@ public class Suppliers extends manage{
             }
         }
         
-    public void edit(String supplierIdToEdit, String newCompany, String newContact, String newEmail, String newPhone, String newAddress, String newWebsite) {
+    public void edit(String supplierIdToEdit, String newItem, String newCompany, String newContact, String newEmail, String newPhone, String newAddress) {
     boolean supplierFound = false;
 
     // First, check if the supplier exists
@@ -302,7 +303,7 @@ public class Suppliers extends manage{
             if (supplierId.equalsIgnoreCase(supplierIdToEdit)) {
                 // Supplier found, update its information
                 String oldSupplierId = supplierInfo[0].trim(); // Get the existing Supplier ID
-                String supplierData = oldSupplierId + "," + newCompany + "," + newContact + "," + newEmail + "," + newPhone + "," + newAddress + "," + newWebsite + "\n";
+                String supplierData = oldSupplierId + "," + newItem + ","+ newCompany + "," + newContact + "," + newEmail + "," + newPhone + "," + newAddress + "\n";
                 writer.write(supplierData);
                 supplierFound = true;
             } else {

@@ -188,7 +188,7 @@ public final class Sales {
     while (true) {
         System.out.println("\n----------------- Suppliers Entry Menu -----------------");
         System.out.println("1. View Suppliers.");
-        System.out.println("2. Find Specific Suppliers by Company Name.");
+        System.out.println("2. Find Specific Suppliers by Supplied Item Name (E.g, Coffee, Milk).");
         System.out.println("3. Add Supplier.");
         System.out.println("4. Delete Supplier Information.");
         System.out.println("5. Edit Supplier Information.");
