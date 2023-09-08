@@ -13,12 +13,16 @@ package oodj;
 //"/Users/htankhaishan/Documents/2nd Year 1st Sem/Java/OODJ/username.txt"
 
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Admin extends Users{
     
     Scanner sc = new Scanner(System.in);
-    String filename = "/Users/ben/Desktop/OODJ/username.txt";
+
+
+    String filename = "/Users/htankhaishan/Desktop/OODJ/username.txt";
+
     private final UserInputUtility userInputUtility;
     
     
@@ -147,7 +151,7 @@ public class Admin extends Users{
             
             else{
                 System.out.println("wrong chose please inter the number only ");
-                new Admin();
+                Admin admin = new Admin();
             }
             
         sc.nextLine();
@@ -156,7 +160,7 @@ public class Admin extends Users{
         System.out.print(" (Yes or No): ");
         String con = sc.nextLine();
         if (con.equalsIgnoreCase("yes")) {
-            new Admin();
+                Admin admin = new Admin();
         }else {
             System.out.println("Bye Admin, Have a nice day");
             
@@ -164,7 +168,7 @@ public class Admin extends Users{
             
               
                 
-        }catch(Exception ex){
+        }catch(IOException ex){
             
         }
         
