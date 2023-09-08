@@ -1,21 +1,20 @@
-82477PJI,MacBookPro,Laptop,8500,Available,MacBookPro2023-14inches
-60812ZIU,iPhone13,Smartphone,1200,Available,iPhone132023-6.1inches
-726462EA,iPhone13,Smartphone,1200,Available,iPhone132023-6.1inches
-826124YX,DellXPS15,Laptop,2500,Available,DellXPS152023-15.6inches
-573839FA,SonyPlayStation5,Console,600,Available,SonyPlayStation52023
-941273PH,BoseQuietComfort45,Headphones,350,Available,BoseQuietComfort452023
-685032KG,CanonEOSR6,Camera,2500,Available,CanonEOSR62023
-219725LD,AmazonEchoShow10,SmartSpeaker,250,Available,AmazonEchoShow102023
-357682ZT,AppleWatchSeries7,Smartwatch,400,Available,AppleWatchSeries72023
-468691MW,MicrosoftSurfacePro8,Tablet,1500,Available,MicrosoftSurfacePro82023-13inches
-902476NB,NintendoSwitchPro,Console,450,Available,NintendoSwitchPro2023
-634168VR,SonyXperia1III,Smartphone,1000,Available,SonyXperia1III2023-6.5inches
-175298HX,LenovoThinkPadX1,Laptop,2000,Available,LenovoThinkPadX12023-14inches
-549906CP,GoProHero10,ActionCamera,400,Available,GoProHero102023
-320748GK,LGUltraGear,GamingMonitor,800,Available,LGUltraGear27GN9502023-27inches
-786560JT,DysonV15,StickVacuum,700,Available,DysonV152023
-243749SD,NestThermostat,EnergySaver,200,Available,NestThermostat2023
-910733QF,FitbitCharge5,FitnessTracker,150,Available,FitbitCharge52023
-675637AC,JBLFlip6,BluetoothSpeaker,100,Available,JBLFlip62023
-126258EZ,SonyWH-1000XM5,Headphones,400,Available,SonyWH-1000XM52023166727O3
-65391TVE,MacBookPro,Laptop,13500,Available,MacBookPro2021-16inches
+82477PJI, Apples, Fruits, 1.50, Available, Red delicious apples
+60812ZIU, Oranges, Fruits, 2.00, Available, Navel oranges
+726462EA, Bananas, Fruits, 0.50, Available, Cavendish bananas
+826124YX, Milk, Dairy, 3.00, Available, Whole milk
+573839FA, Eggs, Dairy, 2.00, Available, Grade A large eggs
+941273PH, Bread, Bakery, 1.00, Available, Whole wheat bread
+685032KG, Cheese, Dairy, 5.00, Available, Cheddar cheese
+219725LD, Soda, Beverages, 2.00, Available, Coca-Cola
+357682ZT, Water, Beverages, 1.00, Available, Bottled water
+468691MW, Coffee, Beverages, 4.00, Available, Ground coffee
+82477PJI, Beef, Meat, 4.99, Available, Ground beef
+60812ZIU, Salmon, Fish, 12.99, Available, Fresh salmon
+726462EA, Chicken, Meat, 1.99, Available, Boneless, skinless chicken breast
+826124YX, Carrots, Vegetables, 0.99, Available, Fresh carrots
+573839FA, Onions, Vegetables, 0.69, Available, Yellow onions
+941273PH, Potatoes, Vegetables, 1.29, Available, Russet potatoes
+685032KG, Butter, Dairy, 2.49, Available, Unsalted butter
+219725LD, Olive oil, Oils, 10.99, Available, Extra virgin olive oil
+357682ZT, Rice, Grains, 1.99, Available, White rice
+468691MW, Beans, Legumes, 1.49, Available, Black beans

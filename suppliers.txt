@@ -1,3 +1,10 @@
-53446PKN,Apple,Mr. Tom,tom@apple.com,+6012345678,Kuala Lumpur,apple.com.my
-72313LCI,Samsung,Ms. Ben,ben@samsung.com,+601987653,Kuala Lumpur,samsung.com
-85807MIN,MicroSoft,Mr. Jassar,jassar@microsoft.com,+608736213,Kuala Lumpur,microsoft.com
+53446PKN, ABC Suppliers, Mr. Smith, smith@applesupplier.com, +6012345678, Kuala Lumpur, Apple
+72313LCI, XYZ Suppliers, Ms. Johnson, johnson@orangessupplier.com, +601987653, Kuala Lumpur, Orange
+85807MIN, Global Sourcing, Mr. Brown, brown@bananassupplier.com, +608736213, Kuala Lumpur, Banana
+82477PJI, Fresh Harvesters, Mr. Davis, davis@beefsupplier.com, +6012345678, Kuala Lumpur, Beef
+60812ZIU, Ocean Catchers, Ms. Wilson, wilson@fishsupplier.com, +601987653, Kuala Lumpur, Salmon
+726462EA, Farm to Table, Mr. Miller, miller@poultrysupplier.com, +608736213, Kuala Lumpur, Chicken
+826124YX, Dairy Delights, Mr. Harris, harris@milksupplier.com, +6012345678, Kuala Lumpur, Milk
+573839FA, Eggcellent Farms, Ms. Anderson, anderson@eggsupplier.com, +601987653, Kuala Lumpur, Egg
+941273PH, Bread Masters, Mr. Taylor, taylor@breadsupplier.com, +608736213, Kuala Lumpur, Bread
+685032KG, Cheese Creations, Mr. Jackson, jackson@cheesesupplier.com, +6012345678, Kuala Lumpur, Cheese

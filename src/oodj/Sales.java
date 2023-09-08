@@ -351,20 +351,95 @@ public final class Sales {
     }
     }
     
-    public void purchaseRequisition() {
-        System.out.println("List of Purchase Orders Submenu...");
-        // Add submenu options and logic here
-        System.out.println("Click Enter to Go Back Main Menu.");
-        String submenuChoice = scanner.nextLine();
-        if (submenuChoice.isEmpty()) {
-            System.out.print("Go back to Main Menu? (Yes/No): ");
-            String yesNo = scanner.nextLine().toLowerCase();
-            if (yesNo.equals("yes")) {
-                displayMenu = true; // Go back to the main menu
-            }
-        } else {
-            System.out.println("Invalid number. Please enter a valid option.");
+    public void purchaseRequisition() throws IOException {
+    while (true) {
+        System.out.println("Purchase Requisition Submenu...\n1. View.\n2. Find.\n3. Add\n4. Delete\n5. Edit\n0. Go back to Main Menu\n");
+        System.out.print("Enter your choice: ");
+        String submenuChoiceStr = scanner.nextLine();
+        
+        // Validate input before parsing
+        if (!submenuChoiceStr.matches("\\d+")) {
+            System.out.println("Invalid input. Please enter a number.");
+            continue;
         }
+        
+        int submenuChoice = Integer.parseInt(submenuChoiceStr);
+
+        switch (submenuChoice) {
+            case 1 -> {
+                System.out.println("View All Purchase Requisitions.");
+                PR pr = new PR();
+                pr.view();
+                // Ask the user to enter something before breaking
+                System.out.println("Press Enter to continue...\n");
+                scanner.nextLine(); // Wait for the user to press Enter
+            }
+            case 2 -> {
+                System.out.println("Input date (dd-mm-yyyy) to find Specific Purchase Requisition Information.");
+                PR pr = new PR();
+                System.out.print("Enter a Date to search list of Purchase Requisitions: ");
+                String filter = scanner.nextLine();
+                boolean itemsFound = pr.view(filter);
+                if (!itemsFound) {
+                    System.out.println("\nNo such items.");
+                }
+            }
+            case 3 -> {
+                System.out.println("\nAdd Purchase Requisition.");
+                PR pr = new PR();
+                pr.add();
+            }
+            case 4 -> {
+                System.out.println("Delete Purchase Requisition.");
+                PR pr = new PR();
+                pr.view(); // Display the PR list before deletion
+
+                System.out.print("Enter the PR ID of the item to delete (Enter to Cancel Process): ");
+                String prIDToDelete = scanner.nextLine().trim();
+
+                if (!prIDToDelete.isEmpty()) {
+                    pr.delete(prIDToDelete);
+                } else {
+                    System.out.println("Deletion process canceled.\n");
+                }
+            }
+            case 5 -> {
+                System.out.println("Edit Purchase Requisition Information...");
+                PR pr = new PR();
+                pr.view();
+                System.out.print("\nEnter the PR ID to edit: ");
+                String prIDToEdit = scanner.nextLine();
+
+                // Check if the PR exists before asking for new information
+                if (pr.check(prIDToEdit)) {
+                    // Get user input for editing and check confirmation
+                    boolean confirmed = getUserConfirmation(scanner);
+
+                    if (confirmed) {
+                        String requester = getUserInput("Enter new Requester name: ");
+                        String newName = getUserInput("Enter new product name: ");
+                        String newDescription = getUserInput("Enter new description: ");
+                        String newQty = getUserInput("Enter new quantity: ");
+                        String newPrice = getUserInput("Enter new price: ");
+                        
+                        // Proceed with the edit
+                        pr.edit(prIDToEdit, requester, newName, newDescription, newQty, newPrice);
+                    } else {
+                        System.out.println("\nEdit process canceled.\n");
+                    }
+                } else {
+                    System.out.println("\nThere's no such PR to edit.\n");
+                }
+            }
+            case 0 -> {
+                // Exit the loop to go back to the main menu
+                return;
+            }
+            default -> {
+                System.out.println("Invalid number. Please enter a valid option.");
+            }
+        }
+    }
     }
     
     public void listOfPurchaseOrders() {
