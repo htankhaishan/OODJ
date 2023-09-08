@@ -298,7 +298,7 @@ public void add() {
                     maxColumnWidths[i] = Math.max(maxColumnWidths[i], poInfo[i].length() + 2); // Adding extra padding
                 }
 
-                if (poInfo[1].contains(filter)) {
+                if (poInfo[0].contains(filter)) {
                     itemsFound = true;
                 }
             } else {
