@@ -1,21 +1,21 @@
-82477PJI, Apples, Fruits, 1.50, Available, Red delicious apples
-60812ZIU, Oranges, Fruits, 2.00, Available, Navel oranges
-726462EA, Bananas, Fruits, 0.50, Available, Cavendish bananas
-826124YX, Milk, Dairy, 3.00, Available, Whole milk
-573839FA, Eggs, Dairy, 2.00, Available, Grade A large eggs
-941273PH, Bread, Bakery, 1.00, Available, Whole wheat bread
-685032KG, Cheese, Dairy, 5.00, Available, Cheddar cheese
-219725LD, Soda, Beverages, 2.00, Available, Coca-Cola
-357682ZT, Water, Beverages, 1.00, Available, Bottled water
-468691MW, Coffee, Beverages, 4.00, Available, Ground coffee
-82477PJI, Beef, Meat, 4.99, Available, Ground beef
-60812ZIU, Salmon, Fish, 12.99, Available, Fresh salmon
-726462EA, Chicken, Meat, 1.99, Available, Boneless, skinless chicken breast
-826124YX, Carrots, Vegetables, 0.99, Available, Fresh carrots
-573839FA, Onions, Vegetables, 0.69, Available, Yellow onions
-941273PH, Potatoes, Vegetables, 1.29, Available, Russet potatoes
-685032KG, Butter, Dairy, 2.49, Available, Unsalted butter
-219725LD, Olive oil, Oils, 10.99, Available, Extra virgin olive oil
-357682ZT, Rice, Grains, 1.99, Available, White rice
-468691MW, Beans, Legumes, 1.49, Available, Black beans
-69822IYA,Nestle Coffee,Coffee,20,Available,Black Coffee
+82477PJI,Apples,Fruits,1.50,Available,Red delicious apples
+60812ZIU,Oranges,Fruits,2.00,Available,Navel oranges
+726462EA,Bananas,Fruits,0.50,Available,Cavendish bananas
+826124YX,Milk,Dairy,3.00,Available,Whole milk
+573839FA,Eggs,Dairy,2.00,Available,Grade A large eggs
+941273PH,Bread,Bakery,1.00,Available,Whole wheat bread
+685032KG,Cheese,Dairy,5.00,Available,Cheddar cheese
+219725LD,Soda,Beverages,2.00,Available,Coca-Cola
+357682ZT,Water,Beverages,1.00,Available,Bottled water
+468691MW,Coffee,Beverages,4.00,Available,Ground coffee
+82477PJI,Beef,Meat,4.99,Available,Ground beef
+60812ZIU,Salmon,Fish,12.99,Available,Fresh salmon
+726462EA,Chicken,Meat,1.99,Available,Boneless,skinless chicken breast
+826124YX,Carrots,Vegetables,0.99,Available,Fresh carrots
+573839FA,Onions,Vegetables,0.69,Available,Yellow onions
+941273PH,Potatoes,Vegetables,1.29,Available,Russet potatoes
+685032KG,Butter,Dairy,2.49,Available,Unsalted butter
+219725LD,Olive oil,Oils,10.99,Available,Extra virgin olive oil
+357682ZT,Rice,Grains,1.99,Available,White rice
+468691MW,Beans,Legumes,1.49,Available,Black beans
+69822IYA,Coffee,Coffee,20.00,Available,Nestle Black Coffee
