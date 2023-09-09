@@ -20,7 +20,7 @@ public class DailyReport {
     Scanner sc = new Scanner(System.in);
     
     public DailyReport(){
-        System.out.print("What day do you want to view the reprot (07-09-2023) :  ");
+        System.out.print("What day do you want to view the reprot (dd-mm-yyyy) :  ");
         String date = sc.nextLine();
         view(date);
         

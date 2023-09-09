@@ -125,12 +125,12 @@ public class Suppliers extends manage{
             System.out.println("Supply Item: " + supItem);
             System.out.println("Company Name: " + supname);
             System.out.println("Name: " + conname);
-            System.out.println("Price: " + supemail);
-            System.out.println("Availability: " + supphone);
-            System.out.println("Description: " + supaddr);
+            System.out.println("Email: " + supemail);
+            System.out.println("Phone Number: " + supphone);
+            System.out.println("Address: " + supaddr);
             
             
-            System.out.print("\nDo you want to save this Supplier Information? Please checks before you proceed. (Y/N): ");
+            System.out.print("\nDo you want to save this Supplier Information? Please checks before you proceed. (y/n): ");
             String confirm = scanner.nextLine();
             
             if (confirm.equals("yes") || confirm.equals("y")) {

@@ -94,6 +94,8 @@ public class Items extends manage {
         }
         return codeBuilder.toString().substring(10, 18);
     }   
+    
+    
     private String getUserInput(String prompt) {
         return userInputUtility.getUserInput(prompt);
     }

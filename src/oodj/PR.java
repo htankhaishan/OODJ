@@ -278,26 +278,13 @@ public class PR extends manage {
 
         for (String pr : prList) {
             String[] prInfo = pr.split(",");
-
-            if (prInfo.length >= numColumns) {
-                formattedPRList.add(prInfo);
-
-                for (int i = 0; i < numColumns; i++) {
-                    maxColumnWidths[i] = Math.max(maxColumnWidths[i], prInfo[i].length() + 2); // Adding extra padding
-                }
-
-                // Check if the filter keyword is present in the "Date" column
-                if (prInfo[0].contains(filter)) {
-                    itemsFound = true; // Set the flag if items are found
-                }
-            } else {
-                // Handle the case where there are not enough elements in the array
-                // This might involve logging an error message or skipping the incomplete entry
-                System.out.println("Incomplete entry detected: " + pr);
-            }
+            formattedPRList.add(prInfo);
+            
+            for (int i = 0; i < numColumns; i++) {
+                maxColumnWidths[i] = Math.max(maxColumnWidths[i], prInfo[i].length() + 2); // Adding extra padding
+            }  
+            
         }
-
-        
         
         String format = "| %-" + (maxColumnWidths[0] + 3) + "s | %-" + (maxColumnWidths[1] + 3) + "s | %-" + (maxColumnWidths[2] + 3) + "s | %-" + (maxColumnWidths[3] + 4) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 2) + "s |";
         String separator = " ------------------------------------------------------------------------------------------------";
@@ -309,11 +296,13 @@ public class PR extends manage {
         System.out.println(separator);
 
         for (String[] prInfo : formattedPRList) {
-        System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5]); // Displaying "Supplier ID"
-        System.out.println();
+            if (filter == null || filter.isEmpty() || prInfo[0].contains(filter.toLowerCase())){
+                System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5]); // Displaying "Supplier ID"
+                System.out.println();
+                itemsFound = true;
+            }
         }
-
-        System.out.println(separator);
+            System.out.println(separator);
         
         
         return itemsFound;
@@ -381,7 +370,7 @@ public class PR extends manage {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] prInfo = line.split(",");
-                String prIDFromFile = prInfo[2].trim(); // Assuming the PR ID is at index 1
+                String prIDFromFile = prInfo[0].trim(); // Assuming the PR ID is at index 1
 
                 if (prIDFromFile.equalsIgnoreCase(prIDToEdit)) {
                     return true; // PR found
