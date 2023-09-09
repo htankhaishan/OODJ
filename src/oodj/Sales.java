@@ -220,7 +220,7 @@ public final class Sales {
                 scanner.nextLine(); // Wait for user to press Enter
             }
             case 2 -> {
-                System.out.println("\n-------------- Find Specific Suppliers by Company Name -------------- ");
+                System.out.println("\n-------------- Find Specific Suppliers by Items Name -------------- ");
                 Suppliers suppliers = new Suppliers();
                 System.out.print("\nEnter a item name to search suppliers: ");
                 String filter = scanner.nextLine();
