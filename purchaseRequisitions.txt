@@ -2,4 +2,6 @@
 08-09-2023,Mr.Jassar,36759HMX,Norwegian salmon,50,1500,Norwegian salmon fillets
 08-09-2023,Ms.Junny,564541FC,Milk butter,30,750.0,Milk butter
 08-09-2023,Mr.Ali,2197913C,Rice,10,500.0,Thai Rice
-08-09-2023,Ms.Ben,3432083C,Kimchi,40,800,Korean Kimchi
+10-09-2023,Ms.Ben,3432083C,Kimchi,50,1000,Korean Fresh Kimchi
+10-09-2023,Ms.Ben,300000TK,Chicken,30,300.0,Chicken Breast
+10-09-2023,Mr. Tom,3172508F,Oak Meal,50,1000.0,Swiz Oak Meal

@@ -117,57 +117,73 @@ public class PR extends manage {
 
     @Override
     public void add() {
-        try (FileWriter writer = new FileWriter(FILENAME, true);
-             BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
-            Scanner scanner = new Scanner(System.in);
-            LocalDateTime now = LocalDateTime.now();
-            DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            String date = now.format(dateFormat);
+    try (FileWriter writer = new FileWriter(FILENAME, true);
+         BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
+        Scanner scanner = new Scanner(System.in);
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String date = now.format(dateFormat);
 
-            String itemCode = generateRandomItemCode();
+        String itemCode = generateRandomItemCode();
 
-            System.out.print("Enter the requester: ");
-            String requester = scanner.nextLine();
+        System.out.print("Enter the requester: ");
+        String requester = scanner.nextLine();
 
-            System.out.print("Enter the product name: ");
-            String productName = scanner.nextLine();
+        System.out.print("Enter the product name: ");
+        String productName = scanner.nextLine();
 
-            System.out.print("Enter the quantity: ");
-            int quantity = scanner.nextInt();
-
-            System.out.print("Enter the price: ");
-            double price = scanner.nextDouble();
-
-            scanner.nextLine();
-
-            System.out.print("Enter the description: ");
-            String description = scanner.nextLine();
-
-            System.out.println("\nPlease review the entered data:");
-            System.out.println("Date: " + date);
-            System.out.println("Requester: " + requester);
-            System.out.println("PR ID: " + itemCode);
-            System.out.println("Product Name: " + productName);
-            System.out.println("Quantity: " + quantity);
-            System.out.println("Price: " + price);
-            System.out.println("Description: " + description);
-
-            System.out.print("Do you want to save this PR? (yes/no): ");
-            String confirm = scanner.nextLine();
-
-            if (confirm.equalsIgnoreCase("yes") || confirm.equalsIgnoreCase("y")) {
-                String prData = date + "," + requester + "," + itemCode + "," + productName + "," + quantity + "," + price + "," + description;
-                bufferedWriter.write(prData);
-                bufferedWriter.newLine();
-                System.out.println("\nPR saved successfully.\n");
-            } else {
-                System.out.println("\nPR not saved.\n");
+        int quantity = 0;
+        boolean validQuantity = false;
+        while (!validQuantity) {
+            try {
+                System.out.print("Enter the quantity: ");
+                quantity = Integer.parseInt(scanner.nextLine());
+                validQuantity = true; // Input is valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer for quantity.");
             }
-
-        } catch (IOException e) {
-            System.out.println("\nAn error occurred while saving the PR.\n");
         }
+
+        double price = 0;
+        boolean validPrice = false;
+        while (!validPrice) {
+            try {
+                System.out.print("Enter the price: ");
+                price = Double.parseDouble(scanner.nextLine());
+                validPrice = true; // Input is valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid double for price.");
+            }
+        }
+
+        System.out.print("Enter the description: ");
+        String description = scanner.nextLine();
+
+        System.out.println("\nPlease review the entered data:");
+        System.out.println("Date: " + date);
+        System.out.println("Requester: " + requester);
+        System.out.println("PR ID: " + itemCode);
+        System.out.println("Product Name: " + productName);
+        System.out.println("Quantity: " + quantity);
+        System.out.println("Price: " + price);
+        System.out.println("Description: " + description);
+
+        System.out.print("Do you want to save this PR? (yes/no): ");
+        String confirm = scanner.nextLine();
+
+        if (confirm.equalsIgnoreCase("yes") || confirm.equalsIgnoreCase("y")) {
+            String prData = date + "," + requester + "," + itemCode + "," + productName + "," + quantity + "," + price + "," + description;
+            bufferedWriter.write(prData);
+            bufferedWriter.newLine();
+            System.out.println("\nPR saved successfully.\n");
+        } else {
+            System.out.println("\nPR not saved.\n");
+        }
+
+    } catch (IOException e) {
+        System.out.println("\nAn error occurred while saving the PR.\n");
     }
+}
 
     @Override
     public void delete(String prIDToDelete) {
@@ -319,7 +335,7 @@ public class PR extends manage {
         }
     }
 
-    public void edit(String prIDToEdit, String requester, String newName, String newDescription, String newQuantity, String newPrice) {
+    public void edit(String prIDToEdit, String requester, String newName, String newDescription, int newQuantity, double newPrice) {
         boolean prFound = false;
 
         // First, check if the PR exists
@@ -370,7 +386,7 @@ public class PR extends manage {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] prInfo = line.split(",");
-                String prIDFromFile = prInfo[0].trim(); // Assuming the PR ID is at index 1
+                String prIDFromFile = prInfo[2].trim(); // Assuming the PR ID is at index 1
 
                 if (prIDFromFile.equalsIgnoreCase(prIDToEdit)) {
                     return true; // PR found

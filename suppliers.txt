@@ -9,3 +9,4 @@
 941273PH,Bread,Bread Masters,Mr. Taylor,taylor@breadsupplier.com,+608736213,Kuala Lumpur
 685032KG,Cheese,Cheese Creations,Mr. Jackson,jackson@cheesesupplier.com,+6012345678,Kuala Lumpur
 31279JFL,Coffee,Nestle,Mr. Joshua,Joshua@nestle.com,+60187462537,Kuala Lumpur
+384333SN,Milk,Fresh Cows,Mr. Tim,freshcows@mail.com,+6082746251,Kuala Lumpur

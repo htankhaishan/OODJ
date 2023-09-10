@@ -12,13 +12,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public final class PM {
-    
+    private final String userRole;
     private boolean running;
     private final Scanner scanner;
     private boolean displayMenu;
     private final UserInputUtility userInputUtility; // Composition
     
-    public PM() throws IOException {
+    public PM(String userRole) throws IOException {
+        this.userRole = userRole;
         this.running = true;
         this.scanner = new Scanner(System.in);
         this.displayMenu = true;
@@ -266,32 +267,55 @@ public final class PM {
                 }
             }
             case 5 -> {
-            System.out.println("\n-------------- Edit Purchase Order Information -------------- ");
-            PO po = new PO();
-            po.view();
-            System.out.print("\nEnter the Item Code of the Purchase Order to edit: ");
-            String itemCodeToEdit = scanner.nextLine();
+                System.out.println("\n-------------- Edit Purchase Order Information -------------- ");
+                PO po = new PO();
+                po.view();
+                System.out.print("\nEnter the Item Code of the Purchase Order to edit: ");
+                String itemCodeToEdit = scanner.nextLine();
 
-            // Check if the purchase order exists before asking for new information
-            if (po.check(itemCodeToEdit)) {
-                // Get user input for editing and check confirmation
-                boolean confirmed = getUserConfirmation(scanner);
+                // Check if the purchase order exists before asking for new information
+                if (po.check(itemCodeToEdit)) {
+                    // Get user input for editing and check confirmation
+                    boolean confirmed = getUserConfirmation(scanner);
 
-                if (confirmed) {
-                    String newProductName = getUserInput("Enter new product name: ");
-                    String newSupplier = getUserInput("Enter new supplier: ");
-                    String newQuantity = getUserInput("Enter new quantity: ");
-                    String newPrice = getUserInput("Enter new price: ");
-                    String newDescription = getUserInput("Enter new description: ");
+                    if (confirmed) {
+                        String newProductName = getUserInput("Enter new product name: ");
+                        String newSupplier = getUserInput("Enter new supplier: ");
 
-                    // Proceed with the edit
-                    po.edit(itemCodeToEdit, newProductName, newSupplier, newQuantity, newPrice, newDescription);
+                        int newQuantity = 0; // Initialize with a default value
+                        boolean validQuantity = false;
+                        do {
+                            try {
+                                // Read and convert user input to int for new quantity
+                                newQuantity = Integer.parseInt(getUserInput("Enter new quantity: "));
+                                validQuantity = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid input for quantity. Please enter a valid integer.");
+                            }
+                        } while (!validQuantity);
+
+                        double newPrice = 0.0; // Initialize with a default value
+                        boolean validPrice = false;
+                        do {
+                            try {
+                                // Read and convert user input to double for new price
+                                newPrice = Double.parseDouble(getUserInput("Enter new price: "));
+                                validPrice = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid input for price. Please enter a valid number.");
+                            }
+                        } while (!validPrice);
+
+                        String newDescription = getUserInput("Enter new description: ");
+
+                        // Proceed with the edit
+                        po.edit(itemCodeToEdit, newProductName, newSupplier, newQuantity, newPrice, newDescription);
+                    } else {
+                        System.out.println("\nEdit process canceled.\n");
+                    }
                 } else {
-                    System.out.println("\nEdit process canceled.\n");
+                    System.out.println("\nThere's no such purchase order to edit.\n");
                 }
-            } else {
-                System.out.println("\nThere's no such purchase order to edit.\n");
-            }
             }
 
             case 0 -> {
@@ -307,6 +331,10 @@ public final class PM {
         }
 
     public void logout() {
-        running = false;
+        if ("pm".equals(userRole)) {
+            running = false;
+        } else {
+            Admin admin = new Admin("admin");
+    }
     }
 }

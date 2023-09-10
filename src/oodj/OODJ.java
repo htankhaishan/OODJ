@@ -34,19 +34,18 @@ public class OODJ {
         String username = login.user;
        
        if ("admin".equals(username)){
-           System.out.println("Welcome!");
-           Admin admin = new Admin();
-       }
+            System.out.println("Welcome!");
+            Admin admin = new Admin("admin"); // Pass "admin" as the role
+        }
        
        else if ("sales".equals(username)){
-           System.out.println("Welcome!");
-           Sales sales = new Sales(); 
-           
-       }
+            System.out.println("Welcome!");
+            Sales sales = new Sales("sales"); // Pass "sales" as the role
+        }
            
        else if("pm".equals((username))){
            System.out.println("Welcome!");
-           PM pm = new PM(); 
+           PM pm = new PM("pm"); 
            
        }
        

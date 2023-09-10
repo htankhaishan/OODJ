@@ -91,14 +91,12 @@ public class DailyItemsSale extends manage {
     @Override
     public void add() {
     try (FileWriter writer = new FileWriter(FILENAME, true);
-         BufferedWriter bufferedWriter = new BufferedWriter(writer)) {    
+         BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
         Scanner scanner = new Scanner(System.in);
         LocalDateTime now = LocalDateTime.now();
-        
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String date = now.format(dateFormat);
 
-        // Generate a random 8-digit item code
         String itemCode = generateRandomItemCode();
 
         System.out.print("Enter the item name: ");
@@ -107,13 +105,30 @@ public class DailyItemsSale extends manage {
         System.out.print("Enter the item description: ");
         String itemDescription = scanner.nextLine();
 
-        System.out.print("Enter the quantity sold: ");
-        int quantity = scanner.nextInt();
+        int quantity = 0;
+        boolean validQuantity = false;
+        while (!validQuantity) {
+            try {
+                System.out.print("Enter the quantity sold: ");
+                quantity = Integer.parseInt(scanner.nextLine());
+                validQuantity = true; // Input is valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer for quantity.");
+            }
+        }
 
-        System.out.print("Enter the total revenue: ");
-        double revenue = scanner.nextDouble();
+        double revenue = 0;
+        boolean validRevenue = false;
+        while (!validRevenue) {
+            try {
+                System.out.print("Enter the total revenue: ");
+                revenue = Double.parseDouble(scanner.nextLine());
+                validRevenue = true; // Input is valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid double for revenue.");
+            }
+        }
 
-        // Display the entered data for confirmation
         System.out.println("\nPlease review the entered data:");
         System.out.println("Date: " + date);
         System.out.println("Item Code: " + itemCode);
@@ -123,24 +138,20 @@ public class DailyItemsSale extends manage {
         System.out.println("Total Revenue: " + revenue);
 
         System.out.print("Do you want to save this record? (yes/no): ");
-        scanner.nextLine(); // Consume the newline character
         String confirm = scanner.nextLine();
 
         if (confirm.equalsIgnoreCase("yes") || confirm.equalsIgnoreCase("y")) {
-            // Create a comma-separated string with the daily item sale data
             String saleData = date + "," + itemCode + "," + itemName + "," + itemDescription + "," + quantity + "," + revenue;
-            // Write the daily item sale data to the file
             bufferedWriter.write(saleData);
             bufferedWriter.newLine();
             System.out.println("\nRecord saved successfully.\n");
         } else {
             System.out.println("\nRecord not saved.\n");
         }
-
-        } catch (IOException e) {
-            System.out.println("\nAn error occurred while saving the record.\n");
-        }
+    } catch (IOException e) {
+        System.out.println("\nAn error occurred while saving the record.\n");
     }
+}
 
     @Override
     public void delete(String itemCodeToDelete) {
@@ -292,10 +303,6 @@ public class DailyItemsSale extends manage {
         }
     }
 
-    
-
-    
-    
         String separator = " ---------------------------------------------------------------------------------------------";
         String format = "| %-"+(maxColumnWidths[0]+1)+"s | %-"+(maxColumnWidths[1]+2)+"s | %-"+(maxColumnWidths[2]+2)+"s | %-"+(maxColumnWidths[3]+1)+"s | %-"+(maxColumnWidths[4]+2)+"s | %-"+(maxColumnWidths[5]+5)+"s |";
 
@@ -329,7 +336,7 @@ public class DailyItemsSale extends manage {
         }
     }  
 
-    public void edit(String itemCodeToEdit, String newName, String newDescription, String newQty, String newRev) {
+    public void edit(String itemCodeToEdit, String newName, String newDescription, int newQty, double newRev) {
     boolean itemFound = false;
 
     // First, check if the daily item sale exists
@@ -347,7 +354,7 @@ public class DailyItemsSale extends manage {
             if (itemCode.equalsIgnoreCase(itemCodeToEdit)) {
                 // Daily item sale found, update its information
                 String currentDate = DateTimeGenerator.getCurrentDate(); // Get the current date
-                String newItemData = currentDate + "," + itemCode + "," + dailyItemInfo[2] + "," + dailyItemInfo[3] + ","
+                String newItemData = currentDate + "," + itemCode + "," + newName + "," + newDescription + ","
                         + newQty + "," + newRev + "\n";
                 writer.write(newItemData);
                 itemFound = true;

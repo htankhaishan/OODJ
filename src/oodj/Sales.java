@@ -13,21 +13,23 @@ package oodj;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public final class Sales {
-    
+    private final String userRole;
     private boolean running;
     private final Scanner scanner;
     private boolean displayMenu;
     private final UserInputUtility userInputUtility; // Composition
-
-    public Sales() throws IOException {
+    
+    public Sales(String userRole) throws IOException {
+        this.userRole = userRole;
         this.running = true;
         this.scanner = new Scanner(System.in);
         this.displayMenu = true;
         this.userInputUtility = new UserInputUtility(scanner); // Initialize the UserInputUtility
         start();
     }
-
+    
     private boolean getUserConfirmation(Scanner scanner1) {
         return userInputUtility.getUserConfirmation();
     }
@@ -83,11 +85,10 @@ public final class Sales {
                     }
                 }
             }
-        }
-        //Login login = new Login(); // Create an instance of the Login class
-        //login.start(); // Start the login process
         
-        System.out.println("Logged out Successfully. Goodbye!");
+        
+            System.out.println("Logged out Successfully. Goodbye!");
+        }
     }
 
     public void itemEntry() throws IOException {
@@ -348,22 +349,47 @@ public final class Sales {
                 // Check if the item exists before asking for new information
                 if (DIS.check(itemCodeToEdit)) {
                     // Get user input for editing and check confirmation
-                        boolean confirmed = getUserConfirmation(scanner);
+                    boolean confirmed = getUserConfirmation(scanner);
 
-                        if (confirmed) {
-                            String newName = getUserInput("Enter new name: ");
-                            String newDescription = getUserInput("Enter new description: ");
-                            String newQty = getUserInput("Enter new Quantity: ");
-                            String newRev = getUserInput("Enter new Revenue: ");
-                            // Proceed with the edit
-                            DIS.edit(itemCodeToEdit, newName, newDescription, newQty, newRev);
+                    if (confirmed) {
+                        String newName = getUserInput("Enter new name: ");
+                        String newDescription = getUserInput("Enter new description: ");
+
+                        int newQty = 0;
+                        boolean validQty = false;
+                        do {
+                            try {
+                                // Read and convert user input to int for new quantity
+                                newQty = Integer.parseInt(getUserInput("Enter new Quantity: "));
+                                validQty = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid input for Quantity. Please enter a valid integer.");
+                            }
+                        } while (!validQty);
+
+                        double newRev = 0.0;
+                        boolean validRev = false;
+                        do {
+                            try {
+                                // Read and convert user input to double for new revenue
+                                newRev = Double.parseDouble(getUserInput("Enter new Revenue: "));
+                                validRev = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid input for Revenue. Please enter a valid number.");
+                            }
+                        } while (!validRev);
+
+                        // Proceed with the edit, passing newQty as an int
+                        DIS.edit(itemCodeToEdit, newName, newDescription, newQty, newRev);
+
                         } else {
                             System.out.println("\nEdit process canceled.\n");
                         }
                     } else {
-                    System.out.println("\nThere's no such item to edit.\n");
+                        System.out.println("\nThere's no such item to edit.\n");
+                    }
                 }
-            }
+
 
 
             case 0 -> {
@@ -450,10 +476,33 @@ public final class Sales {
                     if (confirmed) {
                         String requester = getUserInput("Enter new Requester name: ");
                         String newName = getUserInput("Enter new product name: ");
-                        String newQty = getUserInput("Enter new quantity: ");
-                        String newPrice = getUserInput("Enter new price: ");
+
+                        int newQty = 0;
+                        boolean validQty = false;
+                        do {
+                            try {
+                                // Read and convert user input to int for new quantity
+                                newQty = Integer.parseInt(getUserInput("Enter new quantity: "));
+                                validQty = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid input for quantity. Please enter a valid integer.");
+                            }
+                        } while (!validQty);
+
+                        double newPrice = 0.0;
+                        boolean validPrice = false;
+                        do {
+                            try {
+                                // Read and convert user input to double for new price
+                                newPrice = Double.parseDouble(getUserInput("Enter new price: "));
+                                validPrice = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Invalid input for price. Please enter a valid number.");
+                            }
+                        } while (!validPrice);
+
                         String newDescription = getUserInput("Enter new description: ");
-                        
+
                         // Proceed with the edit
                         pr.edit(prIDToEdit, requester, newName, newDescription, newQty, newPrice);
                     } else {
@@ -463,6 +512,7 @@ public final class Sales {
                     System.out.println("\nThere's no such PR to edit.\n");
                 }
             }
+
             case 0 -> {
                 // Exit the loop to go back to the main menu
                 return;
@@ -480,6 +530,7 @@ public final class Sales {
         System.out.println("\n----------------- Purchase Order Menu -----------------");
         System.out.println("1. View Purchase Order");
         System.out.println("2. Find Specific Purchase Order by Date");
+        System.out.println("0. Go Back to Main Menu");
         
         System.out.println("----------------------------------------------------------");
         System.out.print("\nEnter your choice: ");   
@@ -526,7 +577,14 @@ public final class Sales {
     }
 
     public void logout() {
-        running = false;
+        if ("sales".equals(userRole)) {
+            running = false;
+        } else {
+            running = false;
+            Admin admin = new Admin("admin");
+        }
     }
+    
+
     
 }

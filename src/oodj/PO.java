@@ -109,7 +109,7 @@ public class PO extends manage {
     }
     
     @Override
-public void add() {
+    public void add() {
     try (FileWriter writer = new FileWriter(FILENAME, true);
          BufferedWriter bufferedWriter = new BufferedWriter(writer)) {
         Scanner scanner = new Scanner(System.in);
@@ -117,7 +117,6 @@ public void add() {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String date = now.format(dateFormat);
 
-        
         String itemCode = generateRandomItemCode();
 
         System.out.print("Enter the product name: ");
@@ -126,14 +125,29 @@ public void add() {
         System.out.print("Enter the supplier: ");
         String supplier = scanner.nextLine();
 
-        System.out.print("Enter the quantity: ");
-        int quantity = scanner.nextInt();
+        int quantity = 0;
+        boolean validQuantity = false;
+        while (!validQuantity) {
+            try {
+                System.out.print("Enter the quantity: ");
+                quantity = Integer.parseInt(scanner.nextLine());
+                validQuantity = true; // Input is valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer for quantity.");
+            }
+        }
 
-        System.out.print("Enter the price: ");
-        double price = scanner.nextDouble();
-
-        // Consume the newline character left by nextDouble()
-        scanner.nextLine();
+        double price = 0;
+        boolean validPrice = false;
+        while (!validPrice) {
+            try {
+                System.out.print("Enter the price: ");
+                price = Double.parseDouble(scanner.nextLine());
+                validPrice = true; // Input is valid
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid double for price.");
+            }
+        }
 
         System.out.print("Enter the description: ");
         String description = scanner.nextLine();
@@ -282,7 +296,7 @@ public void add() {
     public boolean view(String filter) {
         List<String> poList = readPOListFromFile(FILENAME);
 
-        int numColumns = 7;
+        int numColumns = 6;
         int[] maxColumnWidths = new int[numColumns];
         List<String[]> formattedPOList = new ArrayList<>();
 
@@ -305,12 +319,9 @@ public void add() {
                 System.out.println("Incomplete entry detected: " + po);
             }
         }
-
-       
-        
         
         String format = "| %-" + (maxColumnWidths[0] + 3) + "s | %-" + (maxColumnWidths[1] + 3) + "s | %-" + (maxColumnWidths[2] + 3) + "s | %-" + (maxColumnWidths[3] + 4) + "s | %-" + (maxColumnWidths[4] + 2) + "s | %-" + (maxColumnWidths[5] + 2) + "s |";
-        String separator = " ------------------------------------------------------------------------------------------------";
+        String separator = " --------------------------------------------------------------------------------------------------";
 
         System.out.println("Purchase Requisitions List:");
         System.out.println(separator);        
@@ -319,8 +330,11 @@ public void add() {
         System.out.println(separator);
 
         for (String[] prInfo : formattedPOList) {
-        System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5]); // Displaying "Supplier ID"
-        System.out.println();
+            if (prInfo[0].contains(filter)) {
+            System.out.printf(format, prInfo[0], prInfo[1], prInfo[2], prInfo[3], prInfo[4], prInfo[5]); // Displaying "Supplier ID"
+            System.out.println();
+            itemsFound = true;
+            }
         }
 
         System.out.println(separator);
@@ -329,7 +343,7 @@ public void add() {
         return itemsFound;
     }
 
-    public void edit(String poIDToEdit, String newName, String newSupplier, String newQuantity, String newPrice, String newDescription) {
+    public void edit(String poIDToEdit, String newName, String newSupplier, int newQuantity, double newPrice, String newDescription) {
     boolean poFound = false;
 
     try (Scanner scanner = new Scanner(new File(FILENAME));
@@ -344,7 +358,9 @@ public void add() {
 
             if (poID.equalsIgnoreCase(poIDToEdit)) {
                 String currentDate = DateTimeGenerator.getCurrentDate();
-                String newPOData = currentDate + "," + poID + "," + newName + "," + newSupplier + "," + newQuantity + "," + newPrice + "," + newDescription;
+                
+                String newPOData = currentDate + "," + poID + "," + newName + "," + newSupplier + ","
+                        + newQuantity + "," + newPrice + "," + newDescription;
                 writer.write(newPOData);
                 poFound = true;
             } else {
@@ -352,25 +368,25 @@ public void add() {
                 writer.newLine();
             }
         }
-    } catch (IOException e) {
-        System.out.println("\nAn error occurred while editing the PO information.\n");
-        return;
-    }
+        } catch (IOException e) {
+            System.out.println("\nAn error occurred while editing the PO information.\n");
+            return;
+        }
 
-    if (!poFound) {
-        System.out.println("\nThere's no such PO to edit.\n");
-        return;
-    }
+        if (!poFound) {
+            System.out.println("\nThere's no such PO to edit.\n");
+            return;
+        }
 
-    File originalFile = new File(FILENAME);
-    File temporaryFile = new File(FILENAME + ".tmp");
+        File originalFile = new File(FILENAME);
+        File temporaryFile = new File(FILENAME + ".tmp");
 
-    if (temporaryFile.renameTo(originalFile)) {
-        System.out.println("\nData File renamed successfully.\n");
-    } else {
-        System.out.println("\nFailed to rename Data file.\n");
+        if (temporaryFile.renameTo(originalFile)) {
+            System.out.println("\nData File renamed successfully.\n");
+        } else {
+            System.out.println("\nFailed to rename Data file.\n");
+        }
     }
-}
 
     public boolean check(String poIDToEdit) {
         try (Scanner scanner = new Scanner(new File(FILENAME))) {
